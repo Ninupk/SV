@@ -1,0 +1,74 @@
+<section class="stats-grid">
+  @for (stat of stats; track stat.label) {
+    <mat-card class="app-card stat-card">
+      <div class="stat-card__icon">
+        <mat-icon>{{ stat.icon }}</mat-icon>
+      </div>
+      <div class="stat-card__body">
+        <p class="stat-card__label">{{ stat.label }}</p>
+        <div class="stat-card__row">
+          <span class="stat-card__value">{{ stat.value }}</span>
+          <span class="stat-card__delta" [class.stat-card__delta--down]="stat.trend === 'down'">
+            <mat-icon>{{ stat.trend === 'up' ? 'trending_up' : 'trending_down' }}</mat-icon>
+            {{ stat.delta }}
+          </span>
+        </div>
+      </div>
+    </mat-card>
+  }
+</section>
+
+<mat-card class="app-card table-card">
+  <div class="table-card__head">
+    <div>
+      <h2 class="table-card__title">Recent clients</h2>
+      <p class="table-card__subtitle">Latest client accounts and their connected devices.</p>
+    </div>
+    <button mat-flat-button color="primary">
+      <mat-icon>add</mat-icon>
+      Add client
+    </button>
+  </div>
+
+  <div class="table-card__scroll">
+    <table mat-table [dataSource]="clients" class="clients-table">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let row">{{ row.name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="company">
+        <th mat-header-cell *matHeaderCellDef>Company</th>
+        <td mat-cell *matCellDef="let row">{{ row.company }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="devices">
+        <th mat-header-cell *matHeaderCellDef>Devices</th>
+        <td mat-cell *matCellDef="let row">{{ row.devices }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let row">
+          <mat-chip-set>
+            <mat-chip [class]="'status-chip status-chip--' + row.status.toLowerCase()" disabled>
+              {{ row.status }}
+            </mat-chip>
+          </mat-chip-set>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let row">
+          <button mat-icon-button (click)="removeClient(row)" matTooltip="Remove client" aria-label="Remove client">
+            <mat-icon>delete_outline</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</mat-card>

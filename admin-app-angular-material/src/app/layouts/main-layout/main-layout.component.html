@@ -1,0 +1,131 @@
+<mat-sidenav-container
+  class="shell"
+  [class.shell--collapsed]="isCollapsed() && !isMobile()"
+  [class.shell--mobile]="isMobile()"
+>
+  <mat-sidenav
+    class="sidebar"
+    [class.sidebar--collapsed]="isCollapsed() && !isMobile()"
+    [mode]="sidenavMode"
+    [opened]="isDrawerOpen()"
+    (closedStart)="isMobile() && isDrawerOpen.set(false)"
+    [fixedInViewport]="isMobile()"
+  >
+    <div class="sidebar__logo-wrap">
+      <div class="sidebar__logo-box">
+        @if (!isCollapsed() || isMobile()) {
+          <span class="sidebar__logo-text">SIDEBAR LOGO</span>
+        } @else {
+          <span class="sidebar__logo-text">L</span>
+        }
+      </div>
+    </div>
+
+    <nav class="sidebar__nav">
+      @for (item of navItems; track item.label) {
+        @if (item.children) {
+          <button
+            type="button"
+            class="sidebar__row sidebar__row--toggle"
+            [class.sidebar__row--expanded]="isGroupExpanded(item.label)"
+            (click)="toggleGroup(item.label)"
+            [matTooltip]="isCollapsed() && !isMobile() ? item.label : ''"
+            matTooltipPosition="right"
+          >
+            <span class="sidebar__icon-tile">
+              <mat-icon>{{ item.icon }}</mat-icon>
+            </span>
+            @if (!isCollapsed() || isMobile()) {
+              <span class="sidebar__row-label">{{ item.label }}</span>
+              <mat-icon class="sidebar__chevron" [class.sidebar__chevron--open]="isGroupExpanded(item.label)">
+                chevron_left
+              </mat-icon>
+            }
+          </button>
+
+          @if (isGroupExpanded(item.label) && (!isCollapsed() || isMobile())) {
+            <div class="sidebar__submenu">
+              @for (child of item.children; track child.route + child.label) {
+                <a
+                  class="sidebar__subrow"
+                  [routerLink]="child.route"
+                  routerLinkActive="sidebar__subrow--active"
+                  [routerLinkActiveOptions]="{ exact: false }"
+                  (click)="closeDrawerOnMobile()"
+                >
+                  <mat-icon class="sidebar__subrow-icon">{{ child.icon }}</mat-icon>
+                  <span>{{ child.label }}</span>
+                </a>
+              }
+            </div>
+          }
+        } @else {
+          <a
+            class="sidebar__row"
+            [routerLink]="item.route"
+            routerLinkActive="sidebar__row--active"
+            [routerLinkActiveOptions]="{ exact: false }"
+            [matTooltip]="isCollapsed() && !isMobile() ? item.label : ''"
+            matTooltipPosition="right"
+            (click)="closeDrawerOnMobile()"
+          >
+            <span class="sidebar__icon-tile">
+              <mat-icon>{{ item.icon }}</mat-icon>
+            </span>
+            @if (!isCollapsed() || isMobile()) {
+              <span class="sidebar__row-label">{{ item.label }}</span>
+            }
+          </a>
+        }
+      }
+    </nav>
+
+    @if (!isCollapsed() || isMobile()) {
+      <div class="sidebar__footer">
+        <p class="sidebar__footer-line">Powered by <strong>Admin Console</strong></p>
+        <p class="sidebar__footer-line sidebar__footer-line--muted">copyright © {{ currentYear }}</p>
+      </div>
+    }
+  </mat-sidenav>
+
+  <mat-sidenav-content class="content">
+    <mat-toolbar class="topbar">
+      <button mat-icon-button (click)="toggleSidebar()" aria-label="Toggle navigation">
+        <mat-icon>menu</mat-icon>
+      </button>
+
+      <span class="topbar__title">Dashboard</span>
+      <span class="topbar__spacer"></span>
+
+      <button mat-icon-button matBadge="3" matBadgeColor="warn" matBadgeSize="small" aria-label="Notifications">
+        <mat-icon>notifications_none</mat-icon>
+      </button>
+
+      <button mat-button class="topbar__user" [matMenuTriggerFor]="userMenu">
+        <span class="topbar__avatar">{{ currentUser?.initials ?? 'U' }}</span>
+        <span class="topbar__username">{{ currentUser?.name ?? 'User' }}</span>
+        <mat-icon>expand_more</mat-icon>
+      </button>
+
+      <mat-menu #userMenu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>person_outline</mat-icon>
+          <span>Profile</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>settings</mat-icon>
+          <span>Account settings</span>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item (click)="confirmLogout()">
+          <mat-icon>logout</mat-icon>
+          <span>Sign out</span>
+        </button>
+      </mat-menu>
+    </mat-toolbar>
+
+    <main class="page">
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>

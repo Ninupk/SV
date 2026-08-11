@@ -1,0 +1,22 @@
+<div class="auth-shell">
+  <header class="auth-shell__topbar">
+    <div><img src="../../../" alt=""></div>
+  </header>
+
+  <div class="auth-shell__backdrop">
+    <div class="auth-shell__center">
+      @if (heading()) {
+        <h1 class="auth-shell__heading">{{ heading() }}</h1>
+      }
+      @if (subheading()) {
+        <p class="auth-shell__subheading">{{ subheading() }}</p>
+      }
+
+      <div class="auth-shell__card">
+        <router-outlet></router-outlet>
+      </div>
+
+      <p class="auth-shell__footer">© {{ currentYear }} Admin Console. All rights reserved.</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,107 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+// ---------------------------------------------------------------------------
+// Design tokens
+// Palette: deep indigo (primary) + teal (accent) — a calm, professional
+// admin/SaaS palette distinct from generic warm-cream / near-black defaults.
+// ---------------------------------------------------------------------------
+$app-primary: mat.m2-define-palette(mat.$m2-indigo-palette, 700, 400, 900);
+$app-accent: mat.m2-define-palette(mat.$m2-teal-palette, 500, 300, 700);
+$app-warn: mat.m2-define-palette(mat.$m2-red-palette, 600);
+
+$app-theme: mat.m2-define-light-theme((
+  color: (
+    primary: $app-primary,
+    accent: $app-accent,
+    warn: $app-warn,
+  ),
+  typography: mat.m2-define-typography-config(
+    $font-family: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
+  ),
+  density: 0,
+));
+
+@include mat.all-component-themes($app-theme);
+
+:root {
+  // Brand
+  --color-primary: #4338ca;
+  --color-primary-dark: #3730a3;
+  --color-primary-light: #eef2ff;
+  --color-accent: #0d9488;
+
+  // Surfaces
+  --color-bg-canvas: #f4f6fb;
+  --color-bg-surface: #ffffff;
+  --color-bg-sidebar: #171b2e;
+  --color-bg-sidebar-hover: #232842;
+  --color-bg-sidebar-active: #2a2f52;
+
+  // Text
+  --color-text-primary: #1b1f2a;
+  --color-text-secondary: #6b7280;
+  --color-text-inverse: #e7e9f5;
+  --color-text-inverse-muted: #8b90ac;
+
+  // Borders / lines
+  --color-border: #e5e7f0;
+  --color-border-subtle: #edeef5;
+
+  // Feedback
+  --color-danger: #dc2626;
+  --color-success: #16a34a;
+
+  // Layout metrics
+  --sidebar-width-expanded: 288px;
+  --sidebar-width-collapsed: 76px;
+  --topbar-height: 64px;
+
+  // Shape / elevation
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --shadow-card: 0 1px 2px rgba(16, 24, 40, 0.04), 0 1px 3px rgba(16, 24, 40, 0.06);
+  --shadow-elevated: 0 8px 24px rgba(23, 27, 46, 0.10), 0 2px 6px rgba(23, 27, 46, 0.06);
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--mat-sys-body-medium-font, "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif);
+  background: var(--color-bg-canvas);
+  color: var(--color-text-primary);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+// Utility classes shared across pages
+.app-card {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+
+// Visible keyboard focus, everywhere
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

@@ -1,0 +1,282 @@
+:host {
+  display: block;
+  height: 100dvh;
+}
+
+.shell {
+  height: 100%;
+  background: var(--color-bg-canvas);
+}
+
+// ---------------------------------------------------------------------------
+// Sidebar shell
+// ---------------------------------------------------------------------------
+.sidebar {
+  width: var(--sidebar-width-expanded);
+  background: var(--color-bg-sidebar);
+  background-image: url('/assets/pattern-bg.svg');
+  background-repeat: repeat;
+  background-size: 240px 240px;
+  border-right: none;
+  display: flex;
+  flex-direction: column;
+  transition: width 200ms ease;
+  overflow-x: hidden;
+
+  &--collapsed {
+    width: var(--sidebar-width-collapsed);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Logo card
+// ---------------------------------------------------------------------------
+.sidebar__logo-wrap {
+  flex-shrink: 0;
+  padding: 16px;
+}
+
+.sidebar__logo-box {
+  height: 56px;
+  border-radius: var(--radius-sm);
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 14px;
+  overflow: hidden;
+}
+
+.sidebar__logo-text {
+  font-weight: 800;
+  font-size: 17px;
+  letter-spacing: 0.02em;
+  color: #1b2140;
+  white-space: nowrap;
+}
+
+// ---------------------------------------------------------------------------
+// Nav rows
+// ---------------------------------------------------------------------------
+.sidebar__nav {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.sidebar__row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding-right: 14px;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: transparent;
+  color: var(--color-text-inverse-muted);
+  font: inherit;
+  font-size: 14.5px;
+  font-weight: 500;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease;
+
+  &:hover {
+    background: var(--color-bg-sidebar-hover);
+    color: var(--color-text-inverse);
+  }
+}
+
+.sidebar__row--active {
+  background: var(--color-bg-sidebar-active);
+  color: var(--color-text-inverse);
+
+  .sidebar__icon-tile {
+    background: rgba(255, 255, 255, 0.16);
+  }
+}
+
+.sidebar__row-label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sidebar__icon-tile {
+  width: var(--sidebar-width-collapsed);
+  height: 64px;
+  min-width: var(--sidebar-width-collapsed);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.07);
+
+  mat-icon {
+    color: #fff;
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.sidebar__chevron {
+  flex-shrink: 0;
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  color: var(--color-text-inverse-muted);
+  transition: transform 150ms ease, color 150ms ease;
+}
+
+.sidebar__chevron--open {
+  transform: rotate(-90deg);
+  color: var(--color-text-inverse);
+}
+
+// ---------------------------------------------------------------------------
+// Submenu (children of an expandable group)
+// ---------------------------------------------------------------------------
+.sidebar__submenu {
+  background: rgba(0, 0, 0, 0.16);
+}
+
+.sidebar__subrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 14px 11px calc(var(--sidebar-width-collapsed) + 6px);
+  color: var(--color-text-inverse-muted);
+  font-size: 13.5px;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  transition: background 120ms ease, color 120ms ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--color-text-inverse);
+  }
+}
+
+.sidebar__subrow--active {
+  color: var(--color-text-inverse);
+  background: rgba(255, 255, 255, 0.06);
+  font-weight: 600;
+}
+
+.sidebar__subrow-icon {
+  font-size: 17px;
+  width: 17px;
+  height: 17px;
+  color: inherit;
+}
+
+// ---------------------------------------------------------------------------
+// Footer credit
+// ---------------------------------------------------------------------------
+.sidebar__footer {
+  flex-shrink: 0;
+  padding: 18px 20px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.sidebar__footer-line {
+  margin: 0 0 4px;
+  font-size: 12.5px;
+  color: var(--color-text-inverse-muted);
+
+  strong {
+    color: var(--color-text-inverse);
+    font-weight: 700;
+  }
+}
+
+.sidebar__footer-line--muted {
+  margin-bottom: 0;
+  font-size: 11.5px;
+  opacity: 0.7;
+}
+
+// ---------------------------------------------------------------------------
+// Top bar + content
+// ---------------------------------------------------------------------------
+.content {
+  background: var(--color-bg-canvas);
+  // Angular Material only recalculates its own inline `margin-left` on
+  // drawer open/close, not on a width change of an already-open `mode="side"`
+  // drawer (our expand/collapse). Driving the margin from CSS instead — with
+  // `!important` to beat the inline style — keeps it perfectly in sync with
+  // the sidebar's own width transition instead of snapping in after the fact.
+  transition: margin-left 200ms ease;
+}
+
+.shell:not(.shell--mobile) {
+  .content {
+    margin-left: var(--sidebar-width-expanded) !important;
+  }
+
+  &.shell--collapsed .content {
+    margin-left: var(--sidebar-width-collapsed) !important;
+  }
+}
+
+.topbar {
+  height: var(--topbar-height);
+  background: var(--color-bg-surface);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  gap: 4px;
+}
+
+.topbar__title {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.topbar__spacer {
+  flex: 1 1 auto;
+}
+
+.topbar__user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 6px;
+}
+
+.topbar__avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.topbar__username {
+  font-weight: 500;
+  font-size: 14px;
+
+  @media (max-width: 640px) {
+    display: none;
+  }
+}
+
+.page {
+  padding: 24px;
+  min-height: calc(100dvh - var(--topbar-height));
+
+  @media (max-width: 640px) {
+    padding: 16px;
+  }
+}

@@ -1,0 +1,58 @@
+<form [formGroup]="form" (ngSubmit)="submit()" class="flat-form" novalidate>
+  <div class="flat-field">
+    <label class="flat-field__label" for="login-email">Registered Email</label>
+    <input
+      id="login-email"
+      class="flat-field__input"
+      type="email"
+      formControlName="email"
+      autocomplete="email"
+      placeholder="you@company.com"
+    />
+    @if (form.controls.email.hasError('required') && form.controls.email.touched) {
+      <p class="flat-field__error">Email is required</p>
+    } @else if (form.controls.email.hasError('email') && form.controls.email.touched) {
+      <p class="flat-field__error">Enter a valid email address</p>
+    }
+  </div>
+
+  <div class="flat-field">
+    <label class="flat-field__label" for="login-password">Password</label>
+    <div class="flat-field__input-wrap">
+      <input
+        id="login-password"
+        class="flat-field__input"
+        [type]="hidePassword() ? 'password' : 'text'"
+        formControlName="password"
+        autocomplete="current-password"
+        placeholder="Enter your password"
+      />
+      <button
+        type="button"
+        class="flat-field__toggle"
+        (click)="togglePasswordVisibility()"
+        [attr.aria-label]="hidePassword() ? 'Show password' : 'Hide password'"
+      >
+        <mat-icon>{{ hidePassword() ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+    </div>
+    @if (form.controls.password.hasError('required') && form.controls.password.touched) {
+      <p class="flat-field__error">Password is required</p>
+    } @else if (form.controls.password.hasError('minlength') && form.controls.password.touched) {
+      <p class="flat-field__error">Password must be at least 6 characters</p>
+    }
+  </div>
+
+  <div class="flat-form__links">
+    <a href="javascript:void(0)" class="flat-link">Sign Up</a>
+    <a routerLink="/auth/forgot-password" class="flat-link">Forgot password?</a>
+  </div>
+
+  <button type="submit" class="flat-submit" [disabled]="isSubmitting()">
+    @if (isSubmitting()) {
+      <mat-progress-spinner diameter="20" mode="indeterminate" strokeWidth="3"></mat-progress-spinner>
+    } @else {
+      Log in
+    }
+  </button>
+</form>

@@ -1,0 +1,138 @@
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+
+  @media (max-width: 1100px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 560px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stat-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px;
+}
+
+.stat-card__icon {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  border-radius: var(--radius-sm);
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-card__label {
+  margin: 0 0 6px;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+.stat-card__row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.stat-card__value {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.stat-card__delta {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--color-success);
+
+  mat-icon {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+  }
+
+  &--down {
+    color: var(--color-danger);
+  }
+}
+
+.table-card {
+  padding: 20px 20px 8px;
+}
+
+.table-card__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.table-card__title {
+  margin: 0 0 4px;
+  font-size: 16.5px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.table-card__subtitle {
+  margin: 0;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+.table-card__scroll {
+  overflow-x: auto;
+}
+
+.clients-table {
+  width: 100%;
+
+  th {
+    color: var(--color-text-secondary);
+    font-size: 12.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  td {
+    font-size: 14px;
+    color: var(--color-text-primary);
+  }
+}
+
+.status-chip {
+  font-size: 12px;
+  font-weight: 600;
+  min-height: 24px;
+
+  &--active {
+    background: #ecfdf5 !important;
+    color: var(--color-success) !important;
+  }
+
+  &--inactive {
+    background: #f3f4f6 !important;
+    color: var(--color-text-secondary) !important;
+  }
+
+  &--pending {
+    background: #fffbeb !important;
+    color: #b45309 !important;
+  }
+}

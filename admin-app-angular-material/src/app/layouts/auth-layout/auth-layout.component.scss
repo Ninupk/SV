@@ -1,0 +1,122 @@
+:host {
+  display: block;
+  height: 100dvh;
+}
+
+.auth-shell {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+// ---------------------------------------------------------------------------
+// Top bar: plain white strip carrying the logo
+// ---------------------------------------------------------------------------
+.auth-shell__topbar {
+  flex-shrink: 0;
+  height: 72px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  padding: 0 32px;
+  box-shadow: 0 1px 0 rgba(16, 24, 40, 0.04);
+}
+
+.auth-shell__logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.auth-shell__logo-mark {
+  flex-shrink: 0;
+  display: block;
+}
+
+.auth-shell__logo-text {
+  font-size: 26px;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.auth-shell__logo-text--strong {
+  font-weight: 800;
+  color: #1b2140;
+}
+
+.auth-shell__logo-text--light {
+  font-weight: 700;
+  color: #7c8ff0;
+  margin-left: 8px;
+}
+
+// ---------------------------------------------------------------------------
+// Backdrop: dark, patterned, fills remaining height
+// ---------------------------------------------------------------------------
+.auth-shell__backdrop {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  background-color: var(--color-bg-sidebar);
+  background-image: url('/assets/pattern-bg.svg');
+  background-repeat: repeat;
+  background-size: 240px 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 20px;
+}
+
+.auth-shell__center {
+  width: 100%;
+  max-width: 460px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.auth-shell__heading {
+  margin: 0 0 8px;
+  font-size: 34px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.92);
+  letter-spacing: 0.01em;
+}
+
+.auth-shell__subheading {
+  margin: 0 0 28px;
+  font-size: 17px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.auth-shell__card {
+  width: 100%;
+  background: var(--color-bg-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-elevated);
+  padding: 32px 32px 28px;
+  text-align: left;
+}
+
+.auth-shell__footer {
+  margin-top: 22px;
+  font-size: 12.5px;
+  color: rgba(255, 255, 255, 0.35);
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .auth-shell__topbar {
+    padding: 0 20px;
+  }
+
+  .auth-shell__heading {
+    font-size: 28px;
+  }
+
+  .auth-shell__card {
+    padding: 26px 22px 22px;
+  }
+}
