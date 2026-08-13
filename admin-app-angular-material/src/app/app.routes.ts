@@ -40,7 +40,7 @@ export const routes: Routes = [
           { path: 'user-edit', component: UserEditComponent, title: 'Edit User'},
         ]
       },
-      
+      { path: 'users/new', component: UserAddComponent, title: 'Add User', data: { breadcrumb: ['User Management', 'Add User'] } },
     ],
   },
 

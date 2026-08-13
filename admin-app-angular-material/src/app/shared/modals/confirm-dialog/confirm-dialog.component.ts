@@ -12,15 +12,6 @@ export interface ConfirmDialogData {
   tone?: 'primary' | 'danger';
 }
 
-/**
- * Generic confirm/cancel modal, reusable anywhere via MatDialog.open().
- *
- * Example:
- *   this.dialog.open(ConfirmDialogComponent, {
- *     width: '400px',
- *     data: { title: 'Delete client', message: 'This cannot be undone.', tone: 'danger' },
- *   }).afterClosed().subscribe(confirmed => { ... });
- */
 @Component({
   selector: 'app-confirm-dialog',
   standalone: true,

@@ -8,7 +8,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialog } from '@angular/material/dialog';
-// import { ConfirmDialogComponent } from '../../../shared/modals/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from '../../shared/modals/confirm-dialog/confirm-dialog.component';
 // import { UserService } from '../../../core/services/user.service';
 // import { User } from '../../../core/models/user.model';
 
