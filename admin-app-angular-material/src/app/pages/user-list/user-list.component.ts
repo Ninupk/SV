@@ -1,23 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
-import { MatCardModule } from '@angular/material/card';
+import { FormsModule } from '@angular/forms';
+
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatTableModule } from '@angular/material/table';
-import { MatChipsModule } from '@angular/material/chips';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatDialog } from '@angular/material/dialog';
-import { ConfirmDialogComponent } from '../../shared/modals/confirm-dialog/confirm-dialog.component';
-// import { UserService } from '../../../core/services/user.service';
-// import { User } from '../../../core/models/user.model';
 
-interface ConfirmDialogData {
-  title: string;
-  message: string;
-  confirmLabel: string;
-  cancelLabel: string;
-  tone: 'danger' | 'default';
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  profileCreated: string;
+  role: string;
+  status: string;
+  impersonate: boolean;
 }
 
 @Component({
@@ -25,41 +26,159 @@ interface ConfirmDialogData {
   standalone: true,
   imports: [
     CommonModule,
-    RouterLink,
-    MatCardModule,
-    MatButtonModule,
-    MatIconModule,
+    FormsModule,
     MatTableModule,
-    MatChipsModule,
-    MatTooltipModule,
+    MatPaginatorModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatIconModule
   ],
   templateUrl: './user-list.component.html',
-  styleUrl: './user-list.component.scss',
+  styleUrl: './user-list.component.scss'
 })
 export class UserListComponent {
-  readonly displayedColumns = ['name', 'email', 'role', 'status', 'actions'];
 
-  constructor(
-    // readonly userService: UserService,
-    private readonly dialog: MatDialog
-  ) {}
+  displayedColumns: string[] = [
+    'select',
+    'name',
+    'email',
+    'profileCreated',
+    'role',
+    'status',
+    'impersonate',
+    'actions'
+  ];
 
-  deleteUser(user: any): void {
-    const data: ConfirmDialogData = {
-      title: `Remove ${user.name}?`,
-      message: `This will revoke ${user.name}'s access. This action cannot be undone.`,
-      confirmLabel: 'Remove',
-      cancelLabel: 'Cancel',
-      tone: 'danger',
+  users: User[] = [
+    {
+      id: 1,
+      name: 'John 4432',
+      email: 'john.doe1785393773168@example.com',
+      profileCreated: '30 Jul 2026',
+      role: 'TestRole_7119',
+      status: 'Awaiting Password Change',
+      impersonate: true
+    },
+    {
+      id: 2,
+      name: 'John 4936',
+      email: 'john.doe1785316941920@example.com',
+      profileCreated: '29 Jul 2026',
+      role: 'Test New Role',
+      status: 'Awaiting Password Change',
+      impersonate: true
+    },
+    {
+      id: 3,
+      name: 'Shen Shan',
+      email: 'shen@mailsac.com',
+      profileCreated: '29 Oct 2025',
+      role: 'Company Admin',
+      status: 'Active',
+      impersonate: false
+    }
+  ];
+
+  dataSource = new MatTableDataSource<User>(this.users);
+
+  searchText = '';
+  selectedRole = '';
+  selectedStatus = '';
+
+  roles = [
+    'TestRole_7119',
+    'Test New Role',
+    'Company Admin'
+  ];
+
+  statuses = [
+    'Active',
+    'Awaiting Password Change'
+  ];
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
+
+  searchUsers() {
+    this.dataSource.filterPredicate = (user: User, filter: string) => {
+      const value = filter.toLowerCase();
+
+      return (
+        user.name.toLowerCase().includes(value) ||
+        user.email.toLowerCase().includes(value)
+      );
     };
 
-    this.dialog
-      .open(ConfirmDialogComponent, { width: '420px', data })
-      .afterClosed()
-      .subscribe((confirmed) => {
-        if (confirmed) {
-          // this.userService.delete(user.id);
-        }
-      });
+    this.dataSource.filter = this.searchText.trim().toLowerCase();
+  }
+
+  applyFilters() {
+    const search = this.searchText.toLowerCase();
+
+    const filtered = this.users.filter(user => {
+
+      const matchesSearch =
+        !search ||
+        user.name.toLowerCase().includes(search) ||
+        user.email.toLowerCase().includes(search);
+
+      const matchesRole =
+        !this.selectedRole ||
+        user.role === this.selectedRole;
+
+      const matchesStatus =
+        !this.selectedStatus ||
+        user.status === this.selectedStatus;
+
+      return matchesSearch && matchesRole && matchesStatus;
+    });
+
+    this.dataSource.data = filtered;
+
+    if (this.paginator) {
+      this.paginator.firstPage();
+    }
+  }
+
+  clearFilters() {
+    this.searchText = '';
+    this.selectedRole = '';
+    this.selectedStatus = '';
+
+    this.dataSource.data = this.users;
+
+    if (this.paginator) {
+      this.paginator.firstPage();
+    }
+  }
+
+  addUser() {
+    console.log('Add new user');
+  }
+
+  exportUsers() {
+    console.log('Export users');
+  }
+
+  impersonateUser(user: User) {
+    console.log('Impersonate:', user);
+  }
+
+  deleteUser(user: User) {
+    console.log('Delete:', user);
+  }
+
+  selectAll(event: any) {
+    console.log('Select all:', event.checked);
+  }
+
+  selectUser(user: User, event: any) {
+    console.log(user, event.checked);
   }
 }
