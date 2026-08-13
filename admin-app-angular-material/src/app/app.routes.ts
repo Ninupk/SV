@@ -6,6 +6,8 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { authGuard } from './core/guards/auth.guard';
 import { UserListComponent } from './pages/user-list/user-list.component';
+import { UserAddComponent } from './pages/user-list/user-add/user-add.component';
+import { UserEditComponent } from './pages/user-list/user-edit/user-edit.component';
 
 
 export const routes: Routes = [
@@ -29,8 +31,16 @@ export const routes: Routes = [
     canActivate: [authGuard],
     children: [
       { path: 'dashboard', component: DashboardComponent, title: 'Dashboard' },
-      { path: 'user-list', component: UserListComponent, title: 'User_list'},
-      { path: 'user-list/user-add', component: UserListComponent, title: 'Add_user'},
+      { 
+        path: 'user-list', 
+        component: UserListComponent, 
+        title: 'User Listing',
+        children:[
+          { path: 'user-add', component: UserAddComponent, title: 'Add User'},
+          { path: 'user-edit', component: UserEditComponent, title: 'Edit User'},
+        ]
+      },
+      
     ],
   },
 
