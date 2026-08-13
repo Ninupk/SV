@@ -68,8 +68,8 @@ export class MainLayoutComponent implements OnDestroy {
 
   readonly navItems: NavItem[] = [
     { label: 'Dashboard', icon: 'home', route: '/dashboard' },
-    { label: 'User Management', icon: 'group', route: '/dashboard' },
-    { label: 'Role Management', icon: 'account_tree', route: '/dashboard' },
+    { label: 'User Management', icon: 'group', route: '/User' },
+    { label: 'Role Management', icon: 'account_tree', route: '/Role' },
     {
       label: 'Entity Management',
       icon: 'device_hub',

@@ -1,90 +1,65 @@
-<mat-sidenav-container
-  class="shell"
-  [class.shell--collapsed]="isCollapsed() && !isMobile()"
-  [class.shell--mobile]="isMobile()"
->
-  <mat-sidenav
-    class="sidebar"
-    [class.sidebar--collapsed]="isCollapsed() && !isMobile()"
-    [mode]="sidenavMode"
-    [opened]="isDrawerOpen()"
-    (closedStart)="isMobile() && isDrawerOpen.set(false)"
-    [fixedInViewport]="isMobile()"
-  >
+<mat-sidenav-container class="shell" [class.shell--collapsed]="isCollapsed() && !isMobile()"
+  [class.shell--mobile]="isMobile()">
+  <mat-sidenav class="sidebar" [class.sidebar--collapsed]="isCollapsed() && !isMobile()" [mode]="sidenavMode"
+    [opened]="isDrawerOpen()" (closedStart)="isMobile() && isDrawerOpen.set(false)" [fixedInViewport]="isMobile()">
     <div class="sidebar__logo-wrap">
       <div class="sidebar__logo-box">
         @if (!isCollapsed() || isMobile()) {
-          <span class="sidebar__logo-text">SIDEBAR LOGO</span>
+        <span class="sidebar__logo-text">SIDEBAR LOGO</span>
         } @else {
-          <span class="sidebar__logo-text">L</span>
+        <span class="sidebar__logo-text">L</span>
         }
       </div>
     </div>
 
     <nav class="sidebar__nav">
       @for (item of navItems; track item.label) {
-        @if (item.children) {
-          <button
-            type="button"
-            class="sidebar__row sidebar__row--toggle"
-            [class.sidebar__row--expanded]="isGroupExpanded(item.label)"
-            (click)="toggleGroup(item.label)"
-            [matTooltip]="isCollapsed() && !isMobile() ? item.label : ''"
-            matTooltipPosition="right"
-          >
-            <span class="sidebar__icon-tile">
-              <mat-icon>{{ item.icon }}</mat-icon>
-            </span>
-            @if (!isCollapsed() || isMobile()) {
-              <span class="sidebar__row-label">{{ item.label }}</span>
-              <mat-icon class="sidebar__chevron" [class.sidebar__chevron--open]="isGroupExpanded(item.label)">
-                chevron_left
-              </mat-icon>
-            }
-          </button>
-
-          @if (isGroupExpanded(item.label) && (!isCollapsed() || isMobile())) {
-            <div class="sidebar__submenu">
-              @for (child of item.children; track child.route + child.label) {
-                <a
-                  class="sidebar__subrow"
-                  [routerLink]="child.route"
-                  routerLinkActive="sidebar__subrow--active"
-                  [routerLinkActiveOptions]="{ exact: false }"
-                  (click)="closeDrawerOnMobile()"
-                >
-                  <mat-icon class="sidebar__subrow-icon">{{ child.icon }}</mat-icon>
-                  <span>{{ child.label }}</span>
-                </a>
-              }
-            </div>
-          }
-        } @else {
-          <a
-            class="sidebar__row"
-            [routerLink]="item.route"
-            routerLinkActive="sidebar__row--active"
-            [routerLinkActiveOptions]="{ exact: false }"
-            [matTooltip]="isCollapsed() && !isMobile() ? item.label : ''"
-            matTooltipPosition="right"
-            (click)="closeDrawerOnMobile()"
-          >
-            <span class="sidebar__icon-tile">
-              <mat-icon>{{ item.icon }}</mat-icon>
-            </span>
-            @if (!isCollapsed() || isMobile()) {
-              <span class="sidebar__row-label">{{ item.label }}</span>
-            }
-          </a>
+      @if (item.children) {
+      <button type="button" class="sidebar__row sidebar__row--toggle"
+        [class.sidebar__row--expanded]="isGroupExpanded(item.label)" (click)="toggleGroup(item.label)"
+        [matTooltip]="isCollapsed() && !isMobile() ? item.label : ''" matTooltipPosition="right">
+        <span class="sidebar__icon-tile">
+          <mat-icon>{{ item.icon }}</mat-icon>
+        </span>
+        @if (!isCollapsed() || isMobile()) {
+        <span class="sidebar__row-label">{{ item.label }}</span>
+        <mat-icon class="sidebar__chevron" [class.sidebar__chevron--open]="isGroupExpanded(item.label)">
+          chevron_left
+        </mat-icon>
         }
+      </button>
+
+      @if (isGroupExpanded(item.label) && (!isCollapsed() || isMobile())) {
+      <div class="sidebar__submenu">
+        @for (child of item.children; track child.route + child.label) {
+        <a class="sidebar__subrow" [routerLink]="child.route" routerLinkActive="sidebar__subrow--active"
+          [routerLinkActiveOptions]="{ exact: false }" (click)="closeDrawerOnMobile()">
+          <mat-icon class="sidebar__subrow-icon">{{ child.icon }}</mat-icon>
+          <span>{{ child.label }}</span>
+        </a>
+        }
+      </div>
+      }
+      } @else {
+      <a class="sidebar__row" [routerLink]="item.route" routerLinkActive="sidebar__row--active"
+        [routerLinkActiveOptions]="{ exact: false }" [matTooltip]="isCollapsed() && !isMobile() ? item.label : ''"
+        matTooltipPosition="right" (click)="closeDrawerOnMobile()">
+        <span class="sidebar__icon-tile">
+          <mat-icon>{{ item.icon }}</mat-icon>
+        </span>
+        @if (!isCollapsed() || isMobile()) {
+        <span class="sidebar__row-label">{{ item.label }}</span>
+        }
+      </a>
+      }
       }
     </nav>
 
     @if (!isCollapsed() || isMobile()) {
-      <div class="sidebar__footer">
-        <p class="sidebar__footer-line">Powered by <strong>Admin Console</strong></p>
-        <p class="sidebar__footer-line sidebar__footer-line--muted">copyright © {{ currentYear }}</p>
-      </div>
+    <div class="sidebar__footer">
+      <p class="sidebar__footer-line">Powered by <strong>Admin Console</strong></p>
+      <p class="sidebar__footer-line sidebar__footer-line--muted">copyright © {{ currentYear }}</p>
+    </div>
     }
   </mat-sidenav>
 

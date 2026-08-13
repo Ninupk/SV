@@ -5,6 +5,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { authGuard } from './core/guards/auth.guard';
+import { UserListComponent } from './pages/user-list/user-list.component';
+
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
@@ -27,6 +29,8 @@ export const routes: Routes = [
     canActivate: [authGuard],
     children: [
       { path: 'dashboard', component: DashboardComponent, title: 'Dashboard' },
+      { path: 'user-list', component: UserListComponent, title: 'User_list'},
+      { path: 'user-list/user-add', component: UserListComponent, title: 'Add_user'},
     ],
   },
 
