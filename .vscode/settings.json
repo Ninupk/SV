@@ -1,0 +1,5 @@
+{
+    "js/ts.preferences.preferTypeOnlyAutoImports": true,
+    "js/ts.preferences.includePackageJsonAutoImports": "on",
+    "js/ts.suggest.autoImports": true
+}
