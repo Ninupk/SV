@@ -1,67 +1,72 @@
-<div class="user-dialog">
-  <h2 mat-dialog-title class="user-dialog__title">{{ this['isEditMode'] ? 'Edit User' : 'Add New User' }}</h2>
+<h2 mat-dialog-title>Add New User</h2>
 
-  <mat-dialog-content class="user-dialog__content">
-    <form class="user-dialog__form" novalidate>
-      <div class="user-field">
-        <label class="user-field__label" for="user-name">Name <span class="user-field__required">*</span></label>
-        <input
-          id="user-name"
-          class="user-field__input"
-          type="text"
-          formControlName="name"
-          placeholder="Full name"
-          autocomplete="off"
-        />
-        <!-- @if (form.controls.name.hasError('required') && form.controls.name.touched) {
-          <p class="user-field__error">Name is required</p>
-        } -->
-      </div>
+<mat-dialog-content>
 
-      <div class="user-field">
-        <label class="user-field__label" for="user-email">Email <span class="user-field__required">*</span></label>
-        <input
-          id="user-email"
-          class="user-field__input"
-          type="email"
-          formControlName="email"
-          placeholder="name@company.com"
-          autocomplete="off"
-        />
-        @if (form.controls.email.hasError('required') && form.controls.email.touched) {
-          <p class="user-field__error">Email is required</p>
-        } @else if (form.controls.email.hasError('email') && form.controls.email.touched) {
-          <p class="user-field__error">Enter a valid email address</p>
-        }
-      </div>
+  <form [formGroup]="userForm">
 
-      <div class="user-field">
-        <label class="user-field__label" for="user-role">Role <span class="user-field__required">*</span></label>
-        <mat-select id="user-role" class="user-field__select" formControlName="role" placeholder="Select a role">
-          @for (role of roleService.roles(); track role.id) {
-            <mat-option [value]="role.name">{{ role.name }}</mat-option>
-          }
-        </mat-select>
-        @if (form.controls.role.hasError('required') && form.controls.role.touched) {
-          <p class="user-field__error">Role is required</p>
-        }
-      </div>
+    <div>
+      <label>First Name</label>
+      <input type="text" formControlName="firstName">
+    </div>
 
-      <div class="user-field">
-        <label class="user-field__label" for="user-status">Status</label>
-        <mat-select id="user-status" class="user-field__select" formControlName="status">
-          @for (status of statusOptions; track status) {
-            <mat-option [value]="status">{{ status }}</mat-option>
-          }
-        </mat-select>
-      </div>
-    </form>
-  </mat-dialog-content>
+    <div>
+      <label>Last Name</label>
+      <input type="text" formControlName="lastName">
+    </div>
 
-  <mat-dialog-actions align="end" class="user-dialog__actions">
-    <button mat-button type="button" (click)="cancel()">Cancel</button>
-    <button mat-flat-button color="primary" type="button" (click)="save()">
-      {{ isEditMode ? 'Save' : 'Add User' }}
-    </button>
-  </mat-dialog-actions>
-</div>
+    <div>
+      <label>Email</label>
+      <input type="email" formControlName="email">
+    </div>
+
+    <div>
+      <label>Mobile</label>
+      <input type="text" formControlName="mobile">
+    </div>
+
+    <div>
+      <label>Role</label>
+      <select formControlName="role">
+        <option value="">Select Role</option>
+      </select>
+    </div>
+
+    <div>
+      <label>Password</label>
+      <input type="password" formControlName="password">
+    </div>
+
+    <div>
+      <label>Confirm Password</label>
+      <input type="password" formControlName="confirmPassword">
+    </div>
+
+  </form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+
+  <button
+    mat-button
+    type="button"
+    (click)="cancel()">
+    Cancel
+  </button>
+
+  <button
+    mat-button
+    type="button"
+    (click)="resetForm()">
+    Reset
+  </button>
+
+  <button
+    mat-raised-button
+    type="button"
+    (click)="onSubmit()"
+    [disabled]="isSubmitting">
+    Save
+  </button>
+
+</mat-dialog-actions>

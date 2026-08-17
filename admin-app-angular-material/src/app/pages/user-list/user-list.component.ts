@@ -10,6 +10,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { UserAddComponent } from './user-add/user-add.component';
 
 interface User {
   id: number;
@@ -34,7 +36,8 @@ interface User {
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule
   ],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.scss'
@@ -100,7 +103,7 @@ export class UserListComponent {
   ];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-
+  constructor(private dialog: MatDialog) {}
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
@@ -159,7 +162,17 @@ export class UserListComponent {
   }
 
   addUser() {
-    console.log('Add new user');
+    const dialogRef = this.dialog.open(UserAddComponent, {
+      width: '700px',
+      maxWidth: '95vw',
+      disableClose: false
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('User added:', result);
+      }
+    });
   }
 
   exportUsers() {
