@@ -181,9 +181,12 @@ export class UserListComponent {
     };
 
     this.dialog
-      .open(ConfirmDialogComponent, { width: '420px', data })
+      .open<ConfirmDialogComponent, ConfirmDialogData, boolean>(ConfirmDialogComponent, {
+        width: '420px',
+        data,
+      })
       .afterClosed()
-      .subscribe((confirmed) => {
+      .subscribe((confirmed: boolean | undefined) => {
         if (confirmed) {
           this.userService.delete(user.id);
         }
@@ -199,9 +202,12 @@ export class UserListComponent {
     };
 
     this.dialog
-      .open(ConfirmDialogComponent, { width: '420px', data })
+      .open<ConfirmDialogComponent, ConfirmDialogData, boolean>(ConfirmDialogComponent, {
+        width: '420px',
+        data,
+      })
       .afterClosed()
-      .subscribe((confirmed) => {
+      .subscribe((confirmed: boolean | undefined) => {
         if (confirmed) {
           this.snackBar.open(`Impersonating ${user.name}...`, 'Dismiss', { duration: 3000 });
         }
