@@ -13,10 +13,12 @@
 // ---------------------------------------------------------------------------
 .sidebar {
   width: var(--sidebar-width-expanded);
-  background: var(--color-bg-sidebar);
-  background-image: url('/assets/pattern-bg.svg');
-  background-repeat: repeat;
-  background-size: 240px 240px;
+  background: #091242 url('/assets/images/sidebar-bg-org.png') no-repeat center center;
+  background-size: cover;
+  // background: #091242;
+  // background-image: url('/assets/pattern-bg.svg');
+  // background-repeat: repeat;
+  // background-size: 240px 240px;
   border-right: none;
   display: flex;
   flex-direction: column;
@@ -33,17 +35,20 @@
 // ---------------------------------------------------------------------------
 .sidebar__logo-wrap {
   flex-shrink: 0;
-  padding: 16px;
+  padding: 8px;
+  img {
+    max-width: 100%;
+    height: auto;
+  }
 }
 
 .sidebar__logo-box {
-  height: 56px;
-  border-radius: var(--radius-sm);
+  height: 55px;
   background: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 14px;
+  padding: 0 8px;
   overflow: hidden;
 }
 
@@ -63,6 +68,7 @@
   overflow-y: auto;
   overflow-x: hidden;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
+  margin-top: 20px;
 }
 
 .sidebar__row {
@@ -70,31 +76,29 @@
   align-items: center;
   gap: 14px;
   width: 100%;
-  padding-right: 14px;
+  padding: 0 14px 0 0;
   border: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  background: transparent;
-  color: var(--color-text-inverse-muted);
+  background:#4b517247;
+  color: var(--color-text-inverse);
   font: inherit;
   font-size: 14.5px;
   font-weight: 500;
   text-align: left;
   text-decoration: none;
   cursor: pointer;
-  transition: background 120ms ease, color 120ms ease;
-
+  margin-bottom: 15px;
   &:hover {
-    background: var(--color-bg-sidebar-hover);
-    color: var(--color-text-inverse);
+    // background: var(--color-bg-sidebar-hover);
+    // color: var(--color-text-inverse);
   }
 }
 
 .sidebar__row--active {
-  background: var(--color-bg-sidebar-active);
+  background: #0d122166;
   color: var(--color-text-inverse);
-
   .sidebar__icon-tile {
-    background: rgba(255, 255, 255, 0.16);
+    background: #ffffff54;
   }
 }
 
@@ -108,12 +112,12 @@
 
 .sidebar__icon-tile {
   width: var(--sidebar-width-collapsed);
-  height: 64px;
+  height: 55px;
   min-width: var(--sidebar-width-collapsed);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.07);
+  background: #ffffff54;
 
   mat-icon {
     color: #fff;

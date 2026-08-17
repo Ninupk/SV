@@ -1,4 +1,4 @@
-# Admin Console — Angular Material Starter
+# SensorVision
 
 An Angular 18 (standalone components) admin panel starter with Angular Material,
 built around two layouts and a demo-ready dashboard.

@@ -57,14 +57,27 @@
   flex: 1 1 auto;
   min-height: 0;
   overflow-y: auto;
-  background-color: var(--color-bg-sidebar);
-  background-image: url('/assets/pattern-bg.svg');
-  background-repeat: repeat;
-  background-size: 240px 240px;
+  background: #091242 url('/assets/images/login-bg.png') no-repeat center center;
+  background-size: cover;
+  // background-color: #091242;
+  // background-image: url('../../../../public/assets/images/login-bg.png');
+  // background-repeat: repeat;
+  // background-size: 240px 240px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 48px 20px;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #0000004d;
+    z-index: 0;
+  }
+  &> * {
+    position: relative;
+    z-index: 1;
+  }
 }
 
 .auth-shell__center {

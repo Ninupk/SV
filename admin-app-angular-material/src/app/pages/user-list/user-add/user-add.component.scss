@@ -1,0 +1,73 @@
+.user-dialog__title {
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.user-dialog__content {
+  padding-top: 4px;
+}
+
+.user-dialog__form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-top: 8px;
+}
+
+.user-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.user-field__label {
+  font-size: 13.5px;
+  color: var(--color-text-secondary);
+}
+
+.user-field__required {
+  color: var(--color-danger);
+}
+
+.user-field__input,
+.user-field__select {
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  font-size: 14.5px;
+  font-family: inherit;
+  color: var(--color-text-primary);
+  background: var(--color-bg-surface);
+  transition: border-color 120ms ease;
+  box-sizing: border-box;
+
+  &::placeholder {
+    color: #98a2b3;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-primary);
+  }
+}
+
+.user-field__select {
+  // mat-select needs display + a defined height to match the plain inputs above
+  display: flex;
+  align-items: center;
+  min-height: 20px;
+}
+
+.user-field__error {
+  margin: 0;
+  font-size: 12px;
+  color: var(--color-danger);
+}
+
+.user-dialog__actions {
+  padding: 12px 0 0;
+  margin: 0;
+}

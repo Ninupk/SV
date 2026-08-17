@@ -5,9 +5,9 @@
     <div class="sidebar__logo-wrap">
       <div class="sidebar__logo-box">
         @if (!isCollapsed() || isMobile()) {
-        <span class="sidebar__logo-text">SIDEBAR LOGO</span>
+        <span class="sidebar__logo-text"><img src="/assets/images/SensorVision-logo.png" alt="SensorVision"></span>
         } @else {
-        <span class="sidebar__logo-text">L</span>
+        <span class="sidebar__logo-text"><img src="/assets/images/sv.png" alt="SensorVision"></span>
         }
       </div>
     </div>
@@ -57,7 +57,7 @@
 
     @if (!isCollapsed() || isMobile()) {
     <div class="sidebar__footer">
-      <p class="sidebar__footer-line">Powered by <strong>Admin Console</strong></p>
+      <p class="sidebar__footer-line">Powered by <strong>SensorVision</strong></p>
       <p class="sidebar__footer-line sidebar__footer-line--muted">copyright © {{ currentYear }}</p>
     </div>
     }
@@ -69,7 +69,7 @@
         <mat-icon>menu</mat-icon>
       </button>
 
-      <span class="topbar__title">Dashboard</span>
+      <!-- <span class="topbar__title">Dashboard</span> -->
       <span class="topbar__spacer"></span>
 
       <button mat-icon-button matBadge="3" matBadgeColor="warn" matBadgeSize="small" aria-label="Notifications">

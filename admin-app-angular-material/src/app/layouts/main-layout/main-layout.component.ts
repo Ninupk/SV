@@ -56,7 +56,6 @@ interface NavItem {
 })
 export class MainLayoutComponent implements OnDestroy {
   readonly currentYear = new Date().getFullYear();
-
   /** Sidebar visually collapsed to icon-only rail (desktop only). */
   readonly isCollapsed = signal(false);
   /** True on small viewports — sidenav becomes an overlay drawer. */
@@ -68,30 +67,24 @@ export class MainLayoutComponent implements OnDestroy {
 
   readonly navItems: NavItem[] = [
     { label: 'Dashboard', icon: 'home', route: '/dashboard' },
-    { 
-      label: 'User Management', 
-      icon: 'group', 
-      route: '/user-list', 
-    },
+    { label: 'User Management', icon: 'group',  route: '/user-list'},
     { label: 'Role Management', icon: 'account_tree', route: '/Role' },
-    {
-      label: 'Entity Management',
-      icon: 'device_hub',
+    { label: 'Entity Management', icon: 'device_hub',
       children: [
-        { label: 'Entities', icon: 'category', route: '/dashboard' },
-        { label: 'Entity Types', icon: 'sell', route: '/dashboard' },
+        { label: 'Entities', icon: 'category', route: '/entities' },
+        { label: 'Entity Types', icon: 'sell', route: '/entity-types' },
       ],
     },
-    {
-      label: 'Device Management',
-      icon: 'dns',
+    { label: 'Device Management', icon: 'dns',
       children: [
-        { label: 'Devices', icon: 'sensors', route: '/dashboard' },
-        { label: 'Device Types', icon: 'memory', route: '/dashboard' },
+        { label: 'Device List', icon: 'sensors', route: '/device-list' },
+        { label: 'Device Types', icon: 'memory', route: '/device-types' },
+        { label: 'Downlink Communication', icon: 'memory', route: '/downlink' },
+        { label: 'OTA Updates', icon: 'memory', route: '/ota-updates' },
       ],
     },
-    { label: 'Dashboard Management', icon: 'speed', route: '/dashboard' },
-    { label: 'Alerts', icon: 'notifications', route: '/dashboard' },
+    { label: 'Dashboard Management', icon: 'speed', route: '/dashboard-mngmt' },
+    { label: 'Alerts', icon: 'notifications', route: '/alerts' },
   ];
 
   private readonly breakpointSub: Subscription;
@@ -152,7 +145,7 @@ export class MainLayoutComponent implements OnDestroy {
   confirmLogout(): void {
     const data: ConfirmDialogData = {
       title: 'Sign out',
-      message: 'Are you sure you want to sign out of Admin Console?',
+      message: 'Are you sure you want to sign out of SensorVision?',
       confirmLabel: 'Sign out',
       cancelLabel: 'Cancel',
       tone: 'danger',
