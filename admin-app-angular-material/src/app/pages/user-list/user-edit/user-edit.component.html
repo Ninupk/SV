@@ -1,1 +1,72 @@
-<p>user-edit works!</p>
+<h2 mat-dialog-title>Edit User</h2>
+
+<mat-dialog-content>
+
+  <form [formGroup]="userForm">
+
+    <div>
+      <label>First Name</label>
+      <input type="text" formControlName="firstName">
+    </div>
+
+    <div>
+      <label>Last Name</label>
+      <input type="text" formControlName="lastName">
+    </div>
+
+    <div>
+      <label>Email</label>
+      <input type="email" formControlName="email">
+    </div>
+
+    <div>
+      <label>Mobile</label>
+      <input type="text" formControlName="mobile">
+    </div>
+
+    <div>
+      <label>Role</label>
+      <select formControlName="role">
+        <option value="">Select Role</option>
+      </select>
+    </div>
+
+    <div>
+      <label>Password</label>
+      <input type="password" formControlName="password">
+    </div>
+
+    <div>
+      <label>Confirm Password</label>
+      <input type="password" formControlName="confirmPassword">
+    </div>
+
+  </form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+
+  <button
+    mat-button
+    type="button"
+    (click)="cancel()">
+    Cancel
+  </button>
+
+  <button
+    mat-button
+    type="button"
+    (click)="resetForm()">
+    Reset
+  </button>
+
+  <button
+    mat-raised-button
+    type="button"
+    (click)="onSubmit()"
+    [disabled]="isSubmitting">
+    Save
+  </button>
+
+</mat-dialog-actions>

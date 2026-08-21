@@ -1,48 +1,26 @@
 <div class="user-list-page">
-
   <!-- Page Title -->
   <h1 class="page-title">User Listing</h1>
-
   <!-- Filters -->
   <div class="filter-row">
-
     <!-- Search -->
     <div class="search-wrapper">
       <mat-form-field appearance="outline" class="search-field">
-
-        <input
-          matInput
-          placeholder="Search by Name, Email"
-          [(ngModel)]="searchText"
-          (keyup.enter)="applyFilters()"
-        />
-
-        <button
-          mat-icon-button
-          matSuffix
-          class="search-button"
-          (click)="applyFilters()">
-
+        <input matInput placeholder="Search by Name, Email" [(ngModel)]="searchText" (keyup.enter)="applyFilters()" />
+        <button mat-icon-button matSuffix class="search-button" (click)="applyFilters()">
           <mat-icon>search</mat-icon>
-
         </button>
-
       </mat-form-field>
     </div>
 
     <!-- Role -->
     <mat-form-field appearance="outline" class="filter-field">
-      <mat-select
-        placeholder="Role"
-        [(ngModel)]="selectedRole"
-        (selectionChange)="applyFilters()">
-
+      <mat-select placeholder="Role" [(ngModel)]="selectedRole" (selectionChange)="applyFilters()">
         <mat-option value="">All Roles</mat-option>
-
         @for (role of roles; track role) {
-          <mat-option [value]="role">
-            {{ role }}
-          </mat-option>
+        <mat-option [value]="role">
+          {{ role }}
+        </mat-option>
         }
 
       </mat-select>
@@ -50,27 +28,21 @@
 
     <!-- Status -->
     <mat-form-field appearance="outline" class="filter-field">
-      <mat-select
-        placeholder="Status"
-        [(ngModel)]="selectedStatus"
-        (selectionChange)="applyFilters()">
+      <mat-select placeholder="Status" [(ngModel)]="selectedStatus" (selectionChange)="applyFilters()">
 
         <mat-option value="">All Status</mat-option>
 
         @for (status of statuses; track status) {
-          <mat-option [value]="status">
-            {{ status }}
-          </mat-option>
+        <mat-option [value]="status">
+          {{ status }}
+        </mat-option>
         }
 
       </mat-select>
     </mat-form-field>
 
     <!-- Clear -->
-    <button
-      mat-raised-button
-      class="clear-button"
-      (click)="clearFilters()">
+    <button mat-raised-button class="clear-button" (click)="clearFilters()">
 
       CLEAR
 
@@ -82,20 +54,14 @@
   <!-- Top Actions -->
   <div class="top-actions">
 
-    <button
-      mat-raised-button
-      class="add-user-button"
-      (click)="addUser()">
+    <button mat-raised-button class="add-user-button" (click)="addUser()">
 
       <span>Add New User</span>
       <mat-icon>person_add</mat-icon>
 
     </button>
 
-    <button
-      mat-raised-button
-      class="export-button"
-      (click)="exportUsers()">
+    <button mat-raised-button class="export-button" (click)="exportUsers()">
 
       Export
 
@@ -107,10 +73,7 @@
   <!-- User Table -->
   <div class="table-container">
 
-    <table
-      mat-table
-      [dataSource]="dataSource"
-      class="user-table">
+    <table mat-table [dataSource]="dataSource" class="user-table">
 
 
       <!-- Select -->
@@ -118,16 +81,14 @@
 
         <th mat-header-cell *matHeaderCellDef>
 
-          <mat-checkbox
-            (change)="selectAll($event)">
+          <mat-checkbox (change)="selectAll($event)">
           </mat-checkbox>
 
         </th>
 
         <td mat-cell *matCellDef="let user">
 
-          <mat-checkbox
-            (change)="selectUser(user, $event)">
+          <mat-checkbox (change)="selectUser(user, $event)">
           </mat-checkbox>
 
         </td>
@@ -204,8 +165,7 @@
 
         <td mat-cell *matCellDef="let user">
 
-          <span
-            [class.active-status]="user.status === 'Active'">
+          <span [class.active-status]="user.status === 'Active'">
 
             {{ user.status }}
 
@@ -227,15 +187,11 @@
 
           @if (user.impersonate) {
 
-            <button
-              mat-icon-button
-              class="impersonate-button"
-              (click)="impersonateUser(user)"
-              matTooltip="Impersonate">
+          <button mat-icon-button class="impersonate-button" (click)="impersonateUser(user)" matTooltip="Impersonate">
 
-              <mat-icon>person</mat-icon>
+            <mat-icon>person</mat-icon>
 
-            </button>
+          </button>
 
           }
 
@@ -253,11 +209,7 @@
 
         <td mat-cell *matCellDef="let user">
 
-          <button
-            mat-icon-button
-            class="delete-button"
-            (click)="deleteUser(user)"
-            matTooltip="Delete">
+          <button mat-icon-button class="delete-button" (click)="deleteUser(user)" matTooltip="Delete">
 
             <mat-icon>delete</mat-icon>
 
@@ -269,14 +221,10 @@
 
 
       <!-- Header / Rows -->
-      <tr
-        mat-header-row
-        *matHeaderRowDef="displayedColumns">
+      <tr mat-header-row *matHeaderRowDef="displayedColumns">
       </tr>
 
-      <tr
-        mat-row
-        *matRowDef="let row; columns: displayedColumns;">
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;">
       </tr>
 
     </table>
@@ -290,12 +238,9 @@
     <div class="users-per-page">
       <span>Users per page</span>
 
-      <mat-form-field
-        appearance="outline"
-        class="page-size-field">
+      <mat-form-field appearance="outline" class="page-size-field">
 
-        <mat-select
-          [value]="10">
+        <mat-select [value]="10">
 
           <mat-option [value]="10">10</mat-option>
           <mat-option [value]="20">20</mat-option>
@@ -307,11 +252,7 @@
 
     </div>
 
-    <mat-paginator
-      [pageSize]="10"
-      [pageSizeOptions]="[10, 20, 50]"
-      [hidePageSize]="true"
-      showFirstLastButtons>
+    <mat-paginator [pageSize]="10" [pageSizeOptions]="[10, 20, 50]" [hidePageSize]="true" showFirstLastButtons>
     </mat-paginator>
 
   </div>
