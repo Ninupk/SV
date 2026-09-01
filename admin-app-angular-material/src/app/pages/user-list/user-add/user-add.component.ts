@@ -2,6 +2,11 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { MatFormField, MatError, MatLabel } from "@angular/material/form-field";
+
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-user-add',
@@ -9,8 +14,14 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [
     ReactiveFormsModule,
     MatDialogModule,
-    MatButtonModule
-  ],
+    MatButtonModule,
+    MatFormField,
+    MatError,
+    MatLabel,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule
+],
   templateUrl: './user-add.component.html',
   styleUrl: './user-add.component.scss'
 })

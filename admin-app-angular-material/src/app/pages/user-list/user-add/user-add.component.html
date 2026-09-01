@@ -1,68 +1,105 @@
-<h2 mat-dialog-title>Add New User</h2>
+<h2 mat-dialog-title class="dialog-title">
+  Add New User
+</h2>
 
-<mat-dialog-content>
+<mat-dialog-content class="dialog-content">
+  <form [formGroup]="userForm" class="user-form">
 
-  <form [formGroup]="userForm">
+    <div class="form-row">
 
-    <div>
-      <label>First Name</label>
-      <input type="text" formControlName="firstName">
+      <!-- First Name -->
+      <mat-form-field appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input matInput type="text" formControlName="firstName">
+        <mat-error *ngIf="userForm.get('firstName')?.hasError('required')">
+          First name is required
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Last Name -->
+      <mat-form-field appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input matInput type="text" formControlName="lastName">
+        <mat-error *ngIf="userForm.get('lastName')?.hasError('required')">
+          Last name is required
+        </mat-error>
+      </mat-form-field>
+
     </div>
 
-    <div>
-      <label>Last Name</label>
-      <input type="text" formControlName="lastName">
+    <div class="form-row">
+
+      <!-- Email -->
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email">
+        <mat-error *ngIf="userForm.get('email')?.hasError('required')">
+          Email is required
+        </mat-error>
+        <mat-error *ngIf="userForm.get('email')?.hasError('email')">
+          Enter a valid email
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Mobile -->
+      <mat-form-field appearance="outline">
+        <mat-label>Mobile</mat-label>
+        <input matInput type="text" formControlName="mobile">
+      </mat-form-field>
+
     </div>
 
-    <div>
-      <label>Email</label>
-      <input type="email" formControlName="email">
+    <div class="form-row">
+
+      <!-- Role -->
+      <mat-form-field appearance="outline">
+        <mat-label>Role</mat-label>
+        <mat-select formControlName="role">
+          <mat-option value="">Select Role</mat-option>
+          <mat-option value="admin">Admin</mat-option>
+          <mat-option value="manager">Manager</mat-option>
+          <mat-option value="user">User</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- Password -->
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password">
+      </mat-form-field>
+
     </div>
 
-    <div>
-      <label>Mobile</label>
-      <input type="text" formControlName="mobile">
-    </div>
-
-    <div>
-      <label>Role</label>
-      <select formControlName="role">
-        <option value="">Select Role</option>
-      </select>
-    </div>
-
-    <div>
-      <label>Password</label>
-      <input type="password" formControlName="password">
-    </div>
-
-    <div>
-      <label>Confirm Password</label>
-      <input type="password" formControlName="confirmPassword">
+    <!-- Confirm Password -->
+    <div class="form-row single-field">
+      <mat-form-field appearance="outline">
+        <mat-label>Confirm Password</mat-label>
+        <input matInput type="password" formControlName="confirmPassword">
+      </mat-form-field>
     </div>
 
   </form>
-
 </mat-dialog-content>
 
-<mat-dialog-actions align="end">
+<mat-dialog-actions align="end" class="dialog-actions">
 
   <button
-    mat-button
+    mat-stroked-button
     type="button"
     (click)="cancel()">
     Cancel
   </button>
 
   <button
-    mat-button
+    mat-stroked-button
     type="button"
     (click)="resetForm()">
     Reset
   </button>
 
   <button
-    mat-raised-button
+    mat-flat-button
+    color="primary"
     type="button"
     (click)="onSubmit()"
     [disabled]="isSubmitting">
