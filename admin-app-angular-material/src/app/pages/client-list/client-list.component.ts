@@ -10,6 +10,7 @@ import {
   ConfirmDialogComponent,
   type ConfirmDialogData,
 } from '../../shared/modals/confirm-dialog/confirm-dialog.component';
+import type { CdkTableDataSourceInput } from '@angular/cdk/table';
 @Component({
   selector: 'app-client-list',
   standalone: true,
@@ -26,7 +27,7 @@ import {
   styleUrl: './client-list.component.scss'
 })
 export class ClientListComponent {
-clients: CdkTableDataSourceInput<any>;
+clients: CdkTableDataSourceInput<any> | undefined;
 removeClient(_t71: any) {
 throw new Error('Method not implemented.');
 }
