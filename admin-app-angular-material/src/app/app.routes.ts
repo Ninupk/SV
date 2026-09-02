@@ -8,6 +8,11 @@ import { authGuard } from './core/guards/auth.guard';
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { UserAddComponent } from './pages/user-list/user-add/user-add.component';
 import { UserEditComponent } from './pages/user-list/user-edit/user-edit.component';
+import {AlertsComponent} from "./pages/alerts/alerts.component";
+import {ClientListComponent} from "./pages/client-list/client-list.component";
+import {DeviceListComponent} from "./pages/device-list/device-list.component";
+import {EntityComponent} from "./pages/entity/entity.component";
+import {EntityTypeComponent} from "./pages/entity/entity-type/entity-type.component";
 
 
 export const routes: Routes = [
@@ -38,9 +43,19 @@ export const routes: Routes = [
         children:[
           { path: 'user-add', component: UserAddComponent, title: 'Add User'},
           { path: 'user-edit', component: UserEditComponent, title: 'Edit User'},
+          
         ]
       },
       { path: 'users/new', component: UserAddComponent, title: 'Add User', data: { breadcrumb: ['User Management', 'Add User'] } },
+      { path: 'alerts', component: AlertsComponent, title: 'Alerts' },
+      { path: 'clients', component: ClientListComponent, title: 'Clients' },
+      { path: 'devices', component: DeviceListComponent, title: 'Devices' },
+      { 
+        path: 'entities', 
+        component: EntityComponent, 
+        title: 'Entities',
+        children:[{ path: 'types', component: EntityTypeComponent, title: 'Entity Types' }],
+      },
     ],
   },
 

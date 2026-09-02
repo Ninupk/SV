@@ -78,7 +78,7 @@ export class MainLayoutComponent implements OnDestroy {
     },
     { label: 'Device Management', icon: 'dns',
       children: [
-        { label: 'Device List', icon: 'sensors', route: '/device-list' },
+        { label: 'Device List', icon: 'sensors', route: '/devices' },
         { label: 'Device Types', icon: 'memory', route: '/device-types' },
         { label: 'Downlink Communication', icon: 'memory', route: '/downlink' },
         { label: 'OTA Updates', icon: 'memory', route: '/ota-updates' },
