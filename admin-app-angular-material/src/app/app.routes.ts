@@ -98,7 +98,6 @@ export const routes: Routes = [
         component: EntityComponent,
         title: 'Entities',
         children: [
-          { path: 'entity', component: EntityTypeComponent, title: 'Entity' },
           {
             path: 'entity-type',
             component: EntityTypeComponent,
