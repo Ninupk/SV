@@ -21,6 +21,7 @@ import { DownlinkCommunicationComponent } from './pages/device-mngmt/downlink-co
 import { OtaUpdatesComponent } from './pages/device-mngmt/ota-updates/ota-updates.component';
 import { DeviceTypeComponent } from './pages/device-mngmt/device-type/device-type.component';
 import { DashboardMngmtComponent } from './pages/dashboard-mngmt/dashboard-mngmt.component';
+import { RoleListComponent } from './pages/role/role-list/role-list.component';
 
 
 export const routes: Routes = [
@@ -83,7 +84,7 @@ export const routes: Routes = [
         data: { breadcrumb: ['Client Management', 'Client List'] },
       },
       { path: 'alerts', component: AlertsComponent, title: 'Alerts' },
-      { path: 'role', component: RoleComponent, title: 'Role' },
+      { path: 'role-list', component: RoleListComponent, title: 'Role List' },
       { path: 'clients', component: ClientListComponent, title: 'Clients' },
       {
         path: 'device-mngmt',

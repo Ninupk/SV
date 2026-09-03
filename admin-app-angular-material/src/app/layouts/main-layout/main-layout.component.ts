@@ -69,7 +69,7 @@ export class MainLayoutComponent implements OnDestroy {
     { label: 'Dashboard', icon: 'home', route: '/dashboard' },
     { label: 'User Management', icon: 'group',  route: '/user-list'},
     { label: 'Client Management', icon: 'account_tree', route: '/client-list' },
-    { label: 'Role Management', icon: 'account_tree', route: '/role' },
+    { label: 'Role Management', icon: 'account_tree', route: '/role/role-list' },
     { label: 'Entity Management', icon: 'device_hub',
       children: [
         { label: 'Entity List', icon: 'category', route: '/entities/entity-list' },
