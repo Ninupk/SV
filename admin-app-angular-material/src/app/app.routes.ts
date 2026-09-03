@@ -10,8 +10,8 @@ import { UserAddComponent } from './pages/user-list/user-add/user-add.component'
 import { UserEditComponent } from './pages/user-list/user-edit/user-edit.component';
 import {AlertsComponent} from "./pages/alerts/alerts.component";
 import {ClientListComponent} from "./pages/client-list/client-list.component";
-import {DeviceListComponent} from "./pages/device-list/device-list.component";
-import {DeviceTypesComponent} from "./pages/device-list/device-types/device-types.component";
+import {DeviceListComponent} from "./pages/device-mngmt/device-list/device-list.component";
+import {DeviceTypeComponent} from "./pages/device-mngmt/device-type/device-type.component";
 import {EntityComponent} from "./pages/entity/entity.component";
 import {EntityTypeComponent} from "./pages/entity/entity-type/entity-type.component";
 import {SignupComponent} from "./pages/signup/signup.component";
@@ -88,7 +88,7 @@ export const routes: Routes = [
         children: [
           {
             path: 'device-types',
-            component: DeviceTypesComponent,
+            component: DeviceTypeComponent,
             title: 'Device Types',
           },
         ],
