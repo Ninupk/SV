@@ -10,12 +10,17 @@ import { UserAddComponent } from './pages/user-list/user-add/user-add.component'
 import { UserEditComponent } from './pages/user-list/user-edit/user-edit.component';
 import {AlertsComponent} from "./pages/alerts/alerts.component";
 import {ClientListComponent} from "./pages/client-list/client-list.component";
-import {DeviceListComponent} from "./pages/device-mngmt/device-list/device-list.component";
-import {DeviceTypeComponent} from "./pages/device-mngmt/device-type/device-type.component";
 import {EntityComponent} from "./pages/entity/entity.component";
+import { EntityListComponent } from './pages/entity/entity-list/entity-list.component';
 import {EntityTypeComponent} from "./pages/entity/entity-type/entity-type.component";
 import {SignupComponent} from "./pages/signup/signup.component";
 import { RoleComponent } from './pages/role/role.component';
+import { DeviceMngmtComponent } from './pages/device-mngmt/device-mngmt.component';
+import { DeviceListComponent } from './pages/device-mngmt/device-list/device-list.component';
+import { DownlinkCommunicationComponent } from './pages/device-mngmt/downlink-communication/downlink-communication.component';
+import { OtaUpdatesComponent } from './pages/device-mngmt/ota-updates/ota-updates.component';
+import { DeviceTypeComponent } from './pages/device-mngmt/device-type/device-type.component';
+import { DashboardMngmtComponent } from './pages/dashboard-mngmt/dashboard-mngmt.component';
 
 
 export const routes: Routes = [
@@ -81,15 +86,29 @@ export const routes: Routes = [
       { path: 'role', component: RoleComponent, title: 'Role' },
       { path: 'clients', component: ClientListComponent, title: 'Clients' },
       {
-        path: 'devices',
-        component: DeviceListComponent,
+        path: 'device-mngmt',
+        component: DeviceMngmtComponent,
         title: 'Devices',
-
         children: [
           {
-            path: 'device-types',
+            path: 'device-list',
+            component: DeviceListComponent,
+            title: 'Device List',
+          },
+          {
+            path: 'device-type',
             component: DeviceTypeComponent,
-            title: 'Device Types',
+            title: 'Device Type',
+          },
+          {
+            path: 'downlink-communication',
+            component: DownlinkCommunicationComponent,
+            title: 'Dowlnlink Communication',
+          },
+          {
+            path: 'ota-updates',
+            component: OtaUpdatesComponent,
+            title: 'OTA Updates',
           },
         ],
       },
@@ -99,12 +118,18 @@ export const routes: Routes = [
         title: 'Entities',
         children: [
           {
+            path: 'entity-list',
+            component: EntityListComponent,
+            title: 'Entity Type',
+          },
+          {
             path: 'entity-type',
             component: EntityTypeComponent,
             title: 'Entity Type',
           },
         ],
       },
+      { path: 'dashboard-mngmt', component: DashboardMngmtComponent, title: 'Dashboard' },
     ],
   },
 
