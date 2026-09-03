@@ -7,6 +7,8 @@ import { MatFormField, MatError, MatLabel } from "@angular/material/form-field";
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-user-add',
@@ -20,7 +22,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatLabel,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    CommonModule
 ],
   templateUrl: './user-add.component.html',
   styleUrl: './user-add.component.scss'
