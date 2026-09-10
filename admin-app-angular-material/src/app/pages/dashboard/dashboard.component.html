@@ -1,19 +1,22 @@
 <section class="stats-grid">
   @for (stat of stats; track stat.label) {
-    <mat-card class="app-card stat-card">
-      <div class="stat-card__icon">
-        <mat-icon>{{ stat.icon }}</mat-icon>
-      </div>
-      <div class="stat-card__body">
-        <p class="stat-card__label">{{ stat.label }}</p>
-        <div class="stat-card__row">
-          <span class="stat-card__value">{{ stat.value }}</span>
-          <span class="stat-card__delta" [class.stat-card__delta--down]="stat.trend === 'down'">
-            <mat-icon>{{ stat.trend === 'up' ? 'trending_up' : 'trending_down' }}</mat-icon>
-            {{ stat.delta }}
-          </span>
+    <mat-card class="app-card">
+      <div class="stat-card">
+        <div class="stat-card__icon">
+          <mat-icon>{{ stat.icon }}</mat-icon>
+        </div>
+        <div class="stat-card__body">
+          <p class="stat-card__label">{{ stat.label }}</p>
+          <div class="stat-card__row">
+            <span class="stat-card__value">{{ stat.value }}</span>
+            <span class="stat-card__delta" [class.stat-card__delta--down]="stat.trend === 'down'">
+              <mat-icon>{{ stat.trend === 'up' ? 'trending_up' : 'trending_down' }}</mat-icon>
+              {{ stat.delta }}
+            </span>
+          </div>
         </div>
       </div>
+      <div class="card-link"><a href="#">View All Details</a></div>
     </mat-card>
   }
 </section>

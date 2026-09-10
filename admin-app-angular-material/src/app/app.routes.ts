@@ -22,6 +22,8 @@ import { OtaUpdatesComponent } from './pages/device-mngmt/ota-updates/ota-update
 import { DeviceTypeComponent } from './pages/device-mngmt/device-type/device-type.component';
 import { DashboardMngmtComponent } from './pages/dashboard-mngmt/dashboard-mngmt.component';
 import { RoleListComponent } from './pages/role/role-list/role-list.component';
+import { AddRoleComponent } from './pages/role/add-role/add-role.component';
+import { EditRoleComponent } from './pages/role/edit-role/edit-role.component';
 
 
 export const routes: Routes = [
@@ -84,7 +86,27 @@ export const routes: Routes = [
         data: { breadcrumb: ['Client Management', 'Client List'] },
       },
       { path: 'alerts', component: AlertsComponent, title: 'Alerts' },
-      { path: 'role-list', component: RoleListComponent, title: 'Role List' },
+      { path: 'role', 
+        component: RoleComponent, 
+        title: 'Role',
+        children: [
+          {
+            path: 'role-list',
+            component: RoleListComponent,
+            title: 'Role List',
+          },
+          {
+            path: 'add-role',
+            component: AddRoleComponent,
+            title: 'Add Role',
+          },
+          {
+            path: 'edit-role',
+            component: AddRoleComponent,
+            title: 'Edit Role',
+          },
+        ],
+       },
       { path: 'clients', component: ClientListComponent, title: 'Clients' },
       {
         path: 'device-mngmt',

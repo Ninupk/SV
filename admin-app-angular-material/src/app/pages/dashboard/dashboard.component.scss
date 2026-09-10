@@ -15,7 +15,7 @@
 
 .stat-card {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 14px;
   padding: 18px;
 }
@@ -134,5 +134,16 @@
   &--pending {
     background: #fffbeb !important;
     color: #b45309 !important;
+  }
+}
+.card-link {
+  padding: 8px;
+  text-align: center;
+  background: #181c3c17;
+  a {
+    text-decoration: none;
+    color: var(--color-primary);
+    font-size: 14px;
+    font-weight: 600;
   }
 }
