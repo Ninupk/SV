@@ -1,0 +1,233 @@
+<h2 mat-dialog-title class="dialog-title">
+  Add New User
+</h2>
+
+<mat-dialog-content class="dialog-content">
+    <div class="form-group mb-3">
+    <label>First Name:</label>
+    <span>{{ user.firstName }}</span>
+</div>
+
+<div class="form-group mb-3">
+    <label>Last Name:</label>
+    <span>{{ user.lastName }}</span>
+</div>
+
+<div class="form-group mb-3">
+    <label>Email:</label>
+    <span>{{ user.email }}</span>
+</div>
+
+<div class="form-group mb-3">
+    <label>Phone:</label>
+    <span>{{ user.phone }}</span>
+</div>
+
+<div class="form-group mb-3">
+    <label>Role:</label>
+    <span>{{ user.role }}</span>
+</div>
+
+<div class="form-group mb-3">
+    <label>Status:</label>
+    <span>{{ user.status }}</span>
+</div>
+    <div class="manage-user-area">
+
+    <form>
+
+        <!-- User Details -->
+        <div class="row">
+
+            <!-- Profile Image -->
+            <div class="col-md-4 col-sm-12 pr-img">
+                <div class="user-img-upload">
+
+                    <p class="mb-3">
+                        <strong>Profile image</strong>
+                    </p>
+
+                    <div class="image-upload">
+                        <label for="file-input" class="d-inline-block">
+                            <img
+                                src="assets/img/images/profile-icon.gif"
+                                alt="User profile picture"
+                                class="profile-user-img img-fluid rounded-circle"
+                            >
+                        </label>
+
+                        <input
+                            type="file"
+                            id="file-input"
+                            class="d-none"
+                            accept="image/*"
+                        >
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- User Information -->
+            <div class="col-md-5 col-sm-12 mng-form">
+
+                <div class="form-group mb-3">
+                    <label>First Name:</label>
+                    <span>John</span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label>Last Name:</label>
+                    <span>4432</span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label>Email:</label>
+                    <span>john.doe1785393773168@example.com</span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label>Phone:</label>
+                    <span></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label>Role:</label>
+                    <span>TestRole_7119</span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label>Status:</label>
+                    <span>Awaiting Password Change</span>
+                </div>
+
+            </div>
+
+
+            <!-- Actions -->
+            <div class="col-md-3 col-sm-12">
+
+                <div class="icon-group-sm">
+                    <ul class="list-unstyled">
+
+                        <!-- Edit -->
+                        <li>
+                            <a href="javascript:void(0);" class="text-decoration-none">
+                                <span class="icon-group-item">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </span>
+                                <span>Edit</span>
+                            </a>
+                        </li>
+
+                        <!-- Suspend -->
+                        <li>
+                            <a
+                                href="javascript:void(0);"
+                                title="Suspend"
+                                class="text-decoration-none"
+                            >
+                                <span class="icon-group-item">
+                                    <img
+                                        src="assets/img/images/suspend-user.png"
+                                        alt="Suspend"
+                                    >
+                                </span>
+                                <span>Suspend</span>
+                            </a>
+                        </li>
+
+                        <!-- Impersonate -->
+                        <li>
+                            <a
+                                href="javascript:void(0);"
+                                title="Impersonate"
+                                class="text-decoration-none"
+                            >
+                                <span class="icon-group-item">
+                                    <img
+                                        src="assets/img/images/impersonate-user.png"
+                                        alt="Impersonate"
+                                    >
+                                </span>
+                                <span>Impersonate</span>
+                            </a>
+                        </li>
+
+                        <!-- Email -->
+                        <li>
+                            <a
+                                href="javascript:void(0);"
+                                title="Re-send Registration Email"
+                                class="text-decoration-none"
+                            >
+                                <span class="icon-group-item">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                                <span>Email</span>
+                            </a>
+                        </li>
+
+                        <!-- Credentials -->
+                        <li>
+                            <a
+                                href="javascript:void(0);"
+                                title="User Credentials"
+                                class="text-decoration-none"
+                            >
+                                <span class="icon-group-item">
+                                    <i class="fas fa-shield-alt"></i>
+                                </span>
+                                <span>Credentials</span>
+                            </a>
+                        </li>
+
+                        <!-- Delete -->
+                        <li>
+                            <a
+                                href="javascript:void(0);"
+                                title="Delete"
+                                class="text-decoration-none"
+                            >
+                                <span class="icon-group-item">
+                                    <img
+                                        src="assets/img/images/trash-ico.png"
+                                        alt="Delete"
+                                    >
+                                </span>
+                                <span>Delete</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Bottom Buttons -->
+        <div class="row mt-4">
+
+            <div class="col-md-12">
+
+                <div class="d-flex justify-content-end">
+
+                    <a
+                        href="/user/list"
+                        class="btn btn-secondary"
+                    >
+                        Cancel
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
+</mat-dialog-content>

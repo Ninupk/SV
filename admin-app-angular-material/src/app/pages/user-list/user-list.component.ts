@@ -12,7 +12,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { UserAddComponent } from './user-add/user-add.component';
-
+import { UserViewComponent } from './user-view/user-view.component';
+import { ConfirmDialogComponent } from '../../shared/modals/confirm-dialog/confirm-dialog.component';
 interface User {
   id: number;
   name: string;
@@ -37,13 +38,12 @@ interface User {
     MatSelectModule,
     MatButtonModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
   ],
   templateUrl: './user-list.component.html',
-  styleUrl: './user-list.component.scss'
+  styleUrl: './user-list.component.scss',
 })
 export class UserListComponent {
-
   displayedColumns: string[] = [
     'select',
     'name',
@@ -52,7 +52,7 @@ export class UserListComponent {
     'role',
     'status',
     'impersonate',
-    'actions'
+    'actions',
   ];
 
   users: User[] = [
@@ -63,7 +63,7 @@ export class UserListComponent {
       profileCreated: '30 Jul 2026',
       role: 'TestRole_7119',
       status: 'Awaiting Password Change',
-      impersonate: true
+      impersonate: true,
     },
     {
       id: 2,
@@ -72,7 +72,7 @@ export class UserListComponent {
       profileCreated: '29 Jul 2026',
       role: 'Test New Role',
       status: 'Awaiting Password Change',
-      impersonate: true
+      impersonate: true,
     },
     {
       id: 3,
@@ -81,8 +81,89 @@ export class UserListComponent {
       profileCreated: '29 Oct 2025',
       role: 'Company Admin',
       status: 'Active',
-      impersonate: false
-    }
+      impersonate: false,
+    },
+    {
+      id: 4,
+      name: 'Abc Def',
+      email: 'abc.def@example.com',
+      profileCreated: '28 Oct 2025',
+      role: 'Company Admin',
+      status: 'Active',
+      impersonate: false,
+    },
+    {
+      id: 5,
+      name: 'Michael Brown',
+      email: 'michael.brown@example.com',
+      profileCreated: '25 Oct 2025',
+      role: 'User',
+      status: 'Active',
+      impersonate: false,
+    },
+    {
+      id: 6,
+      name: 'Sarah Wilson',
+      email: 'sarah.wilson@example.com',
+      profileCreated: '22 Oct 2025',
+      role: 'Manager',
+      status: 'Active',
+      impersonate: false,
+    },
+    {
+      id: 7,
+      name: 'David Miller',
+      email: 'david.miller@example.com',
+      profileCreated: '20 Oct 2025',
+      role: 'User',
+      status: 'Active',
+      impersonate: false,
+    },
+    {
+      id: 8,
+      name: 'Emily Davis',
+      email: 'emily.davis@example.com',
+      profileCreated: '18 Oct 2025',
+      role: 'Company Admin',
+      status: 'Active',
+      impersonate: false,
+    },
+    {
+      id: 9,
+      name: 'Robert Taylor',
+      email: 'robert.taylor@example.com',
+      profileCreated: '15 Oct 2025',
+      role: 'User',
+      status: 'Inactive',
+      impersonate: false,
+    },
+    {
+      id: 10,
+      name: 'Jennifer Anderson',
+      email: 'jennifer.anderson@example.com',
+      profileCreated: '12 Oct 2025',
+      role: 'Manager',
+      status: 'Active',
+      impersonate: false,
+    },
+    {
+      id: 11,
+      name: 'James Thomas',
+      email: 'james.thomas@example.com',
+      profileCreated: '10 Oct 2025',
+      role: 'User',
+      status: 'Awaiting Password Change',
+      impersonate: true,
+    },
+    {
+      id: 12,
+      name: 'Lisa Martinez',
+      email: 'lisa.martinez@example.com',
+      profileCreated: '08 Oct 2025',
+      role: 'User',
+      status: 'Active',
+      impersonate: false,
+    },
   ];
 
   dataSource = new MatTableDataSource<User>(this.users);
@@ -91,16 +172,9 @@ export class UserListComponent {
   selectedRole = '';
   selectedStatus = '';
 
-  roles = [
-    'TestRole_7119',
-    'Test New Role',
-    'Company Admin'
-  ];
+  roles = ['TestRole_7119', 'Test New Role', 'Company Admin'];
 
-  statuses = [
-    'Active',
-    'Awaiting Password Change'
-  ];
+  statuses = ['Active', 'Awaiting Password Change'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(private dialog: MatDialog) {}
@@ -124,20 +198,16 @@ export class UserListComponent {
   applyFilters() {
     const search = this.searchText.toLowerCase();
 
-    const filtered = this.users.filter(user => {
-
+    const filtered = this.users.filter((user) => {
       const matchesSearch =
         !search ||
         user.name.toLowerCase().includes(search) ||
         user.email.toLowerCase().includes(search);
 
-      const matchesRole =
-        !this.selectedRole ||
-        user.role === this.selectedRole;
+      const matchesRole = !this.selectedRole || user.role === this.selectedRole;
 
       const matchesStatus =
-        !this.selectedStatus ||
-        user.status === this.selectedStatus;
+        !this.selectedStatus || user.status === this.selectedStatus;
 
       return matchesSearch && matchesRole && matchesStatus;
     });
@@ -165,10 +235,10 @@ export class UserListComponent {
     const dialogRef = this.dialog.open(UserAddComponent, {
       width: '700px',
       maxWidth: '95vw',
-      disableClose: false
+      disableClose: false,
     });
-  
-    dialogRef.afterClosed().subscribe(result => {
+
+    dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         console.log('User added:', result);
       }
@@ -184,7 +254,27 @@ export class UserListComponent {
   }
 
   deleteUser(user: User) {
-    console.log('Delete:', user);
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '450px',
+      maxWidth: '95vw',
+      disableClose: true,
+
+      data: {
+        title: 'Delete User',
+        message: `Are you sure you want to delete "${user.name}"?`,
+        confirmLabel: 'Delete',
+        cancelLabel: 'Cancel',
+        tone: 'danger',
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((confirmed: boolean) => {
+      if (confirmed) {
+        console.log('Deleting user:', user);
+
+        // Your delete API call here
+      }
+    });
   }
 
   selectAll(event: any) {
@@ -193,5 +283,14 @@ export class UserListComponent {
 
   selectUser(user: User, event: any) {
     console.log(user, event.checked);
+  }
+  
+  viewUser(user: any): void {
+    this.dialog.open(UserViewComponent, {
+      width: '900px',
+      maxWidth: '95vw',
+      maxHeight: '90vh',
+      data: user
+    });
   }
 }

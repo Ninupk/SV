@@ -43,9 +43,7 @@
 
     <!-- Clear -->
     <button mat-raised-button class="clear-button" (click)="clearFilters()">
-
       CLEAR
-
     </button>
 
   </div>
@@ -99,13 +97,13 @@
       <!-- Name -->
       <ng-container matColumnDef="name">
 
-        <th mat-header-cell *matHeaderCellDef>
+        <th mat-header-cell *matHeaderCellDef >
           Name
         </th>
 
         <td mat-cell *matCellDef="let user">
 
-          <a class="user-name">
+          <a class="user-name" (click)="viewUser(user)">
             {{ user.name }}
           </a>
 
@@ -188,9 +186,7 @@
           @if (user.impersonate) {
 
           <button mat-icon-button class="impersonate-button" (click)="impersonateUser(user)" matTooltip="Impersonate">
-
             <mat-icon>person</mat-icon>
-
           </button>
 
           }
@@ -254,6 +250,7 @@
 
     <mat-paginator [pageSize]="10" [pageSizeOptions]="[10, 20, 50]" [hidePageSize]="true" showFirstLastButtons>
     </mat-paginator>
+
 
   </div>
 

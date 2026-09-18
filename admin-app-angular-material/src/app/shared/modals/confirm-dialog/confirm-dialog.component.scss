@@ -1,5 +1,5 @@
 .confirm-dialog {
-  padding-top: 4px;
+  padding: 20px;
 }
 
 .confirm-dialog__icon {
@@ -37,4 +37,7 @@
 .confirm-dialog__actions {
   padding: 16px 0 0;
   margin: 0;
+}
+.mat-mdc-dialog-title::before {
+  height: auto !important;
 }
