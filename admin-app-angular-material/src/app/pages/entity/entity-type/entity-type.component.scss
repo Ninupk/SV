@@ -1,0 +1,239 @@
+ .entity-page {
+     padding: 18px 15px;
+ }
+
+ .page-title {
+     font-size: 32px;
+     font-weight: 300;
+     color: #222;
+     margin-bottom: 34px;
+ }
+
+ /* Search */
+ .search-box {
+     width: 473px;
+     height: 48px;
+     border: 1px solid #cbd1e0;
+     display: flex;
+     align-items: center;
+     margin-bottom: 28px;
+ }
+
+ .search-box input {
+     border: 0;
+     outline: 0;
+     box-shadow: none;
+     flex: 1;
+     height: 100%;
+     padding: 0 14px;
+     font-size: 20px;
+     color: #4d5563;
+ }
+
+ .search-box input::placeholder {
+     color: #4d5563;
+     opacity: 1;
+ }
+
+ .search-btn {
+     width: 50px;
+     height: 36px;
+     margin-right: 7px;
+     border: 0;
+     border-radius: 20px;
+     background: #29429b;
+     color: #fff;
+     font-size: 18px;
+ }
+
+ /* Top buttons */
+ .action-buttons {
+     display: flex;
+     justify-content: flex-end;
+     gap: 5px;
+     margin-bottom: 14px;
+ }
+
+ .btn-primary-custom {
+     background: #29429b;
+     border: 0;
+     color: #fff;
+     font-size: 20px;
+     font-weight: 700;
+     padding: 13px 21px;
+     border-radius: 6px;
+ }
+
+ .btn-primary-custom:hover {
+     background: #233987;
+     color: #fff;
+ }
+
+ /* Table */
+ .entity-table {
+     width: 100%;
+     border-collapse: separate;
+     border-spacing: 0 8px;
+ }
+
+ .entity-table thead th {
+     background: #30479f;
+     color: #fff;
+     font-size: 18px;
+     font-weight: 700;
+     padding: 15px 12px;
+     border: 0;
+     text-align: center;
+ }
+
+ .entity-table tbody tr {
+     background: #fff;
+ }
+
+ .entity-table tbody td {
+     height: 64px;
+     padding: 12px;
+     border-top: 1px solid #30479f;
+     border-bottom: 1px solid #30479f;
+     font-size: 18px;
+     vertical-align: middle;
+ }
+
+ .entity-table tbody td:first-child {
+     border-left: 1px solid #30479f;
+ }
+
+ .entity-table tbody td:last-child {
+     border-right: 1px solid #30479f;
+ }
+
+ .entity-table th:nth-child(1),
+ .entity-table td:nth-child(1) {
+     width: 10%;
+     text-align: center;
+ }
+
+ .entity-table th:nth-child(2),
+ .entity-table td:nth-child(2) {
+     width: 16%;
+     text-align: left;
+ }
+
+ .entity-table th:nth-child(3),
+ .entity-table td:nth-child(3) {
+     width: 16%;
+     text-align: left;
+ }
+
+ .entity-table th:nth-child(4),
+ .entity-table td:nth-child(4) {
+     width: 18%;
+     text-align: left;
+ }
+
+ .entity-table th:nth-child(5),
+ .entity-table td:nth-child(5) {
+     width: 25%;
+     text-align: left;
+ }
+
+ .entity-table th:nth-child(6),
+ .entity-table td:nth-child(6) {
+     width: 15%;
+     text-align: center;
+ }
+
+ .entity-name {
+     color: #29429b;
+     text-decoration: underline;
+     cursor: pointer;
+ }
+
+ .action-icon {
+     color: #111;
+     font-size: 21px;
+     margin: 0 3px;
+     cursor: pointer;
+ }
+
+ /* Bottom */
+ .table-footer {
+     margin-top: 55px;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+ }
+
+ .per-page {
+     display: flex;
+     align-items: center;
+     gap: 35px;
+     font-size: 18px;
+ }
+
+ .page-size {
+     width: 70px;
+     text-align: center;
+     padding-bottom: 8px;
+     border-bottom: 2px solid #ddd;
+ }
+
+ .pagination {
+     margin: 0;
+ }
+
+ .pagination .page-link {
+     border: 0;
+     color: #bdbdbd;
+     font-size: 18px;
+     padding: 8px 10px;
+ }
+
+ .pagination .page-item.active .page-link {
+     background: #2196e3;
+     color: #fff;
+     border-radius: 0;
+ }
+
+ .pagination .page-item.disabled .page-link {
+     color: #ccc;
+     background: transparent;
+ }
+
+ /* Responsive */
+ @media (max-width: 992px) {
+     .action-buttons {
+         justify-content: flex-start;
+         flex-wrap: wrap;
+     }
+
+     .search-box {
+         width: 100%;
+         max-width: 473px;
+     }
+
+     .table-responsive {
+         overflow-x: auto;
+     }
+
+     .entity-table {
+         min-width: 1000px;
+     }
+ }
+
+ @media (max-width: 576px) {
+     .page-title {
+         font-size: 26px;
+     }
+
+     .btn-primary-custom {
+         font-size: 16px;
+         padding: 10px 14px;
+     }
+
+     .table-footer {
+         flex-direction: column;
+         align-items: flex-start;
+         gap: 25px;
+     }
+ }
