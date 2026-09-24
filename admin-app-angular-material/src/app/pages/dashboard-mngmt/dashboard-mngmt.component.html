@@ -1,1 +1,156 @@
-<p>dashboard-mngmt works!</p>
+<div class="card page-card">
+    <div class="card-body">
+        <!-- Header -->
+        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+            <h4 class="mb-0">Dashboard Listing</h4>
+        </div>
+        <!-- Filter -->
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <div class="d-flex align-items-center gap-1">                
+                    <!-- Search Box -->
+                    <div class="float-start" style="min-width: 200px;">
+                        <div class="input-group">
+                            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-primary px-3" type="submit">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>    
+                    </div>    
+                    <!-- Clear Button -->
+                    <button type="button" class="btn btn-light">
+                        CLEAR
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="w-100 d-table mb-3">
+            <div class="float-end d-flex gap-2">
+                <button class="btn btn-primary btn-material">
+                    Add New Dashboard
+                </button>
+            </div>
+        </div>
+        <!-- Table -->
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th width="80">
+                            <input type="checkbox">
+                        </th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Devices</th>
+                        <th>Created On</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>Clear Dashboard</td>
+                        <td>Test dashboard</td>
+                        <td>Edge Gateway</td>
+                        <td>21 Jul 2026</td>
+                        <td>
+                            <button class="btn btn-outline-primary action-btn">
+                                <i class="bi bi-copy"></i>
+                            </button>
+                            <button class="btn btn-outline-primary action-btn">
+                                <i class="bi bi-table"></i>
+                            </button>
+                            <button class="btn btn-outline-primary action-btn">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                            <button class="btn btn-outline-danger action-btn">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>Manager</td>
+                        <td>Department Manager</td>
+                        <td>weqw</td>
+                        <td>11-02-2026</td>
+                        <td>
+                            <button class="btn btn-outline-primary action-btn">
+                                <i class="bi bi-copy"></i>
+                            </button>
+                            <button class="btn btn-outline-primary action-btn">
+                                <i class="bi bi-table"></i>
+                            </button>
+                            <button class="btn btn-outline-primary action-btn">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                            <button class="btn btn-outline-danger action-btn">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>User</td>
+                        <td>Standard User Access</td>
+                        <td>33</td>
+                        <td>11-02-2026</td>
+                        <td>
+                            <button class="btn btn-outline-primary action-btn">
+                                <i class="bi bi-copy"></i>
+                            </button>
+                            <button class="btn btn-outline-primary action-btn">
+                                <i class="bi bi-table"></i>
+                            </button>
+                            <button class="btn btn-outline-primary action-btn">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                            <button class="btn btn-outline-danger action-btn">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Footer -->
+        <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap">
+
+            <div>
+                Showing 1 to 3 of 25 entries
+            </div>
+
+            <!-- Pagination -->
+            <nav>
+                <ul class="pagination mb-0">
+                    <li class="page-item disabled">
+                        <a class="page-link">Previous</a>
+                    </li>
+
+                    <li class="page-item active">
+                        <a class="page-link">1</a>
+                    </li>
+
+                    <li class="page-item">
+                        <a class="page-link">2</a>
+                    </li>
+
+                    <li class="page-item">
+                        <a class="page-link">3</a>
+                    </li>
+
+                    <li class="page-item">
+                        <a class="page-link">Next</a>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+
+    </div>
+</div>
+
