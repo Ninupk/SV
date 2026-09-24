@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { UserViewComponent } from '../user-view/user-view.component';
 import { ConfirmDialogComponent } from '../../../shared/modals/confirm-dialog/confirm-dialog.component';
+import { UserAddComponent } from '../user-add/user-add.component';
 interface User {
   id: number;
   name: string;
@@ -231,7 +232,19 @@ export class UserListViewComponent {
   }
 
   addUser() {
-    console.log('Add user');
+    const dialogRef = this.dialog.open(UserAddComponent, {
+      width: '600px',
+      maxWidth: '90vw',
+      disableClose: true
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialog closed:', result);
+
+      if (result) {
+        // Refresh user list if required
+      }
+    });
   }
 
   exportUsers() {

@@ -21,7 +21,7 @@ export class UserEditComponent {
 
   constructor(
     private fb: FormBuilder,
-    private dialogRef: MatDialogRef<UserEditComponent>,
+    // private dialogRef: MatDialogRef<UserEditComponent>,
   ) {
     this.createForm();
   }
@@ -57,7 +57,7 @@ export class UserEditComponent {
   }
 
   cancel(): void {
-    this.dialogRef.close();
+    // this.dialogRef.close();
   }
 
 }
