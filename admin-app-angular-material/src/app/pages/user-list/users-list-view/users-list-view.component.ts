@@ -11,8 +11,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { UserViewComponent } from './user-view/user-view.component';
-import { ConfirmDialogComponent } from '../../shared/modals/confirm-dialog/confirm-dialog.component';
+import { UserViewComponent } from '../user-view/user-view.component';
+import { ConfirmDialogComponent } from '../../../shared/modals/confirm-dialog/confirm-dialog.component';
 interface User {
   id: number;
   name: string;
@@ -42,7 +42,7 @@ interface User {
   templateUrl: './users-list-view.component.html',
   styleUrl: './users-list-view.component.scss',
 })
-export class UserListComponent {
+export class UserListViewComponent {
   displayedColumns: string[] = [
     'select',
     'name',

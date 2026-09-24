@@ -6,6 +6,7 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { authGuard } from './core/guards/auth.guard';
 import { UserListComponent } from './pages/user-list/user-list.component';
+import { UserListViewComponent } from './pages/user-list/users-list-view/users-list-view.component';
 import { UserAddComponent } from './pages/user-list/user-add/user-add.component';
 import { UserEditComponent } from './pages/user-list/user-edit/user-edit.component';
 import {AlertsComponent} from "./pages/alerts/alerts.component";
@@ -77,6 +78,11 @@ export const routes: Routes = [
             component: UserEditComponent,
             title: 'Edit User',
           },
+          {
+            path: 'user-list-view',
+            component: UserListViewComponent,
+            title: 'View User List',
+          }
         ],
       },
       {
