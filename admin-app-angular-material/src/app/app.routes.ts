@@ -5,10 +5,17 @@ import { LoginComponent } from './pages/login/login.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { authGuard } from './core/guards/auth.guard';
+
+import { UsersComponent } from './pages/users/users.component';
+import { UserEditSaComponent } from './pages/users/user-edit-sa/user-edit-sa.component';
+import { UserViewSaComponent } from './pages/users/user-view-sa/user-view-sa.component';
+
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { UserListViewComponent } from './pages/user-list/users-list-view/users-list-view.component';
 import { UserAddComponent } from './pages/user-list/user-add/user-add.component';
 import { UserEditComponent } from './pages/user-list/user-edit/user-edit.component';
+
+
 import {AlertsComponent} from "./pages/alerts/alerts.component";
 import {ClientListComponent} from "./pages/client-list/client-list.component";
 import {EntityComponent} from "./pages/entity/entity.component";
@@ -25,6 +32,7 @@ import { DashboardMngmtComponent } from './pages/dashboard-mngmt/dashboard-mngmt
 import { RoleListComponent } from './pages/role/role-list/role-list.component';
 import { AddRoleComponent } from './pages/role/add-role/add-role.component';
 import { EditRoleComponent } from './pages/role/edit-role/edit-role.component';
+import { UserListSaComponent } from './pages/users/user-list-sa/user-list-sa.component';
 
 
 export const routes: Routes = [
@@ -68,21 +76,25 @@ export const routes: Routes = [
     children: [
       { path: 'dashboard', component: DashboardComponent, title: 'Dashboard' },
       {
-        path: 'user-list',
-        component: UserListComponent,
-        title: 'User Listing',
+        path: 'user',
+        component: UsersComponent,
+        title: 'User Component',
         children: [
-          { path: 'user-add', component: UserAddComponent, title: 'Add User' },
           {
-            path: 'user-edit',
-            component: UserEditComponent,
+            path: ':id/edit',
+            component: UserEditSaComponent,
             title: 'Edit User',
           },
           {
-            path: 'user-list-view',
-            component: UserListViewComponent,
-            title: 'View User List',
-          }
+            path: 'list',
+            component: UserListSaComponent,
+            title: 'User Listing',
+          },
+          {
+            path: ':id/view',
+            component: UserViewSaComponent,
+            title: 'View User',
+          },
         ],
       },
       {

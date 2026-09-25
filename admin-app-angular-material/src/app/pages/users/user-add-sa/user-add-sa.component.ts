@@ -1,12 +1,76 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormField, MatError, MatLabel } from "@angular/material/form-field";
+
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-user-add-sa',
   standalone: true,
-  imports: [],
+  imports: [
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatFormField,
+    MatError,
+    MatLabel,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    CommonModule
+  ],
   templateUrl: './user-add-sa.component.html',
   styleUrl: './user-add-sa.component.scss'
 })
 export class UserAddSaComponent {
+
+  userForm!: FormGroup;
+  isSubmitting = false;
+
+  constructor(
+    private fb: FormBuilder,
+    private dialogRef: MatDialogRef<UserAddSaComponent>,
+  ) {
+    this.createForm();
+  }
+
+  createForm(): void {
+    this.userForm = this.fb.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      mobile: [''],
+      role: ['', Validators.required],
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required]
+    });
+  }
+
+  onSubmit(): void {
+    if (this.userForm.invalid) {
+      this.userForm.markAllAsTouched();
+      return;
+    }
+
+    // API call will be added here
+    this.saveUser();
+  }
+
+  saveUser(): void {
+    // TODO: Add API call
+  }
+
+  resetForm(): void {
+    this.userForm.reset();
+  }
+
+  cancel(): void {
+    this.dialogRef.close();
+  }
 
 }
