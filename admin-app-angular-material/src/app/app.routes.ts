@@ -120,7 +120,7 @@ export const routes: Routes = [
           },
           {
             path: 'edit-role',
-            component: AddRoleComponent,
+            component: EditRoleComponent,
             title: 'Edit Role',
           },
         ],

@@ -632,3 +632,27 @@ table th {
   background: #475abf !important;
   color: #fff !important;
 }
+.profile-icon {
+  width: 80px;
+  height: 80px;
+  background: #e7e7e7;
+  line-height: normal;
+  text-align: center;
+  i {
+    font-size: 50px;
+    color: #939394;
+  }
+}
+.action-item {
+  margin-bottom: 16px;
+  .action-button {
+    background: none;
+    border: 1px solid #2a419a;
+    border-radius: 6px;
+    color: #2a419a;
+    padding: 5px 10px;
+  }
+}
+.cdk-overlay-pane {
+  width: 700px !important;
+}

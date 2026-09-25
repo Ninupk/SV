@@ -1,1 +1,138 @@
-<p>ota-updates works!</p>
+<div class="card page-card">
+    <div class="card-body">
+
+        <!-- Header -->
+        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+            <h4 class="mb-0">OTA Updates</h4>
+        </div>
+
+        <!-- Filter -->
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <div class="d-flex align-items-center gap-1">                
+                    <div class="float-start">
+                        <select name="" id="" class="form-select" style="min-width: 200px;">
+                            <option value="">Device Type</option>
+                            <option value="">Option 2</option>
+                            <option value="">Option 3</option>
+                        </select>
+                    </div>                       
+                    <div class="float-start" style="min-width: 200px;">
+                       <input type="text" class="form-control" placeholder="Created On">
+                    </div>                
+                    <div class="float-start" style="min-width: 200px;">
+                       <input type="text" class="form-control" placeholder="Published On">
+                    </div>                
+                    <!-- Search Box -->
+                    <div class="float-start" style="min-width: 200px;">
+                        <div class="input-group">
+                            <input class="form-control" type="search" placeholder="Search" aria-label="Search by version number and file name">
+                            <button class="btn btn-primary px-3" type="submit">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>    
+                    </div>                 
+                    <!-- Clear Button -->
+                    <button type="button" class="btn btn-light">
+                        CLEAR
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="w-100 d-table mb-3">
+            <div class="float-end d-flex gap-2">
+                <button class="btn btn-success btn-material">
+                    Upload
+                </button>
+            </div>
+        </div>
+        <!-- Table -->
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th width="80">Sl No</th>
+                        <th>Version</th>
+                        <th>File Name</th>
+                        <th>Created on</th>
+                        <th>Modified on</th>
+                        <th>Published on</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Admin</td>
+                        <td>System Administrator</td>
+                        <td>22</td>
+                        <td>11-02-2026</td>
+                        <td>11-03-2026</td>
+                        <td>
+                            <button class="btn btn-outline-danger action-btn"><i class="bi bi-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Manager</td>
+                        <td>Department Manager</td>
+                        <td>weqw</td>
+                        <td>11-02-2026</td>
+                        <td>11-03-2026</td>
+                        <td>
+                            <button class="btn btn-outline-danger action-btn"><i class="bi bi-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>User</td>
+                        <td>Standard User Access</td>
+                        <td>33</td>
+                        <td>11-02-2026</td>
+                        <td>11-03-2026</td>
+                        <td>
+                            <button class="btn btn-outline-danger action-btn"><i class="bi bi-trash"></i></button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Footer -->
+        <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap">
+
+            <div>
+                Showing 1 to 3 of 25 entries
+            </div>
+
+            <!-- Pagination -->
+            <nav>
+                <ul class="pagination mb-0">
+                    <li class="page-item disabled">
+                        <a class="page-link">Previous</a>
+                    </li>
+
+                    <li class="page-item active">
+                        <a class="page-link">1</a>
+                    </li>
+
+                    <li class="page-item">
+                        <a class="page-link">2</a>
+                    </li>
+
+                    <li class="page-item">
+                        <a class="page-link">3</a>
+                    </li>
+
+                    <li class="page-item">
+                        <a class="page-link">Next</a>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+
+    </div>
+</div>
+

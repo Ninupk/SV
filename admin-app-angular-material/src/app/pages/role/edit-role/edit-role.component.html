@@ -1,1 +1,450 @@
-<p>edit-role works!</p>
+<form [formGroup]="roleForm" (ngSubmit)="saveRole()">
+
+  <div class="row g-4">
+    <div class="col-12 col-md-5">
+      <mat-card class="h-100">
+        <mat-card-header>
+          <mat-card-title class="mb-3">Edit Role</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+
+          <mat-form-field
+            appearance="outline"
+            class="w-100">
+
+            <mat-label>Name</mat-label>
+
+            <input
+              matInput
+              formControlName="name"
+              placeholder="Name">
+
+            @if (
+              roleForm.get('name')?.hasError('required') &&
+              roleForm.get('name')?.touched
+            ) {
+              <mat-error>
+                Name is required
+              </mat-error>
+            }
+
+          </mat-form-field>
+          <div class="mb-3">
+            <textarea name="" id="" class="form-control">Description</textarea>
+          </div>
+          <div class="text-end">
+            <button class="btn btn-secondary me-2">Cancel</button>
+            <button class="btn btn-primary">Save</button>
+          </div>
+        </mat-card-content>
+
+      </mat-card>
+
+    </div>
+
+
+    <div class="col-12 col-md-7">
+
+      <mat-card class="h-100">
+
+        <mat-card-header class="mb-3">
+          <mat-card-title>Permission</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+
+          <div class="">
+            <!-- User Management -->
+            <div class="permission-section">
+          
+              <div class="row align-items-center my-2">
+          
+                <div class="col">
+                  <h6 class="permission-title">
+                    User Management
+                  </h6>
+                </div>
+          
+                <div class="col-auto">
+                  <div class="form-check select-all">
+                    <input class="form-check-input" type="checkbox" id="selectUserAll">
+          
+                    <label class="form-check-label" for="selectUserAll">
+                      Select all
+                    </label>
+                  </div>
+                </div>
+          
+              </div>
+          
+              <div class="row">
+          
+                <!-- Left column -->
+                <div class="col-md-6 permission-column">
+          
+                  <div class="form-check permission-item">
+                    <input class="form-check-input" type="checkbox" checked id="userListing">
+          
+                    <label class="form-check-label" for="userListing">
+                      User Listing
+                    </label>
+                  </div>
+          
+                  <div class="form-check permission-item">
+                    <input class="form-check-input" type="checkbox" id="editUser">
+          
+                    <label class="form-check-label" for="editUser">
+                      Edit User
+                    </label>
+                  </div>
+          
+                  <div class="form-check permission-item">
+                    <input class="form-check-input" type="checkbox" id="impersonate">
+          
+                    <label class="form-check-label" for="impersonate">
+                      Impersonate
+                    </label>
+                  </div>
+          
+                </div>
+          
+                <!-- Right column -->
+                <div class="col-md-6 permission-column">
+          
+                  <div class="form-check permission-item">
+                    <input class="form-check-input" type="checkbox" id="addUser">
+          
+                    <label class="form-check-label" for="addUser">
+                      Add User
+                    </label>
+                  </div>
+          
+                  <div class="form-check permission-item">
+                    <input class="form-check-input" type="checkbox" id="deleteUser">
+          
+                    <label class="form-check-label" for="deleteUser">
+                      Delete User
+                    </label>
+                  </div>
+          
+                  <div class="form-check permission-item">
+                    <input class="form-check-input" type="checkbox" checked id="suspendUser">
+          
+                    <label class="form-check-label" for="suspendUser">
+                      Suspend User
+                    </label>
+                  </div>
+          
+                </div>
+          
+              </div>
+            </div>
+            <!-- Role Management -->
+            <div class="permission-section">
+          
+              <div class="row align-items-center my-2">
+          
+                <div class="col">
+                  <h6 class="permission-title">
+                    Role Management
+                  </h6>
+                </div>
+          
+                <div class="col-auto">
+                  <div class="form-check select-all">
+                    <input class="form-check-input" type="checkbox" id="selectRoleAll">
+          
+                    <label class="form-check-label" for="selectRoleAll">
+                      Select all
+                    </label>
+                  </div>
+                </div>
+          
+              </div>
+          
+              <div class="row">
+          
+                <div class="col-md-6 permission-column">
+          
+                  <div class="form-check permission-item">
+                    <input class="form-check-input" type="checkbox" id="roleListing">
+          
+                    <label class="form-check-label" for="roleListing">
+                      Role Listing
+                    </label>
+                  </div>
+          
+                  <div class="form-check permission-item">
+                    <input class="form-check-input" type="checkbox" id="editRole">
+          
+                    <label class="form-check-label" for="editRole">
+                      Edit Role
+                    </label>
+                  </div>
+          
+                </div>
+          
+                <div class="col-md-6 permission-column">
+          
+                  <div class="form-check permission-item">
+                    <input class="form-check-input" type="checkbox" id="addRole">
+          
+                    <label class="form-check-label" for="addRole">
+                      Add Role
+                    </label>
+                  </div>
+          
+                  <div class="form-check permission-item">
+                    <input class="form-check-input" type="checkbox" id="deleteRole">
+          
+                    <label class="form-check-label" for="deleteRole">
+                      Delete Role
+                    </label>
+                  </div>
+          
+                </div>
+          
+              </div>
+            </div>
+            <!-- Entity Management -->
+            <div class="permission-section">
+          
+              <div class="row align-items-center my-2">
+          
+                <div class="col">
+                  <h6 class="permission-title">
+                    Entity Management
+                  </h6>
+                </div>
+          
+                <div class="col-auto">
+                  <div class="form-check select-all">
+                    <input class="form-check-input" type="checkbox" id="selectEntityAll">
+          
+                    <label class="form-check-label" for="selectEntityAll">
+                      Select all
+                    </label>
+                  </div>
+                </div>
+          
+              </div>
+          
+              <div class="row">
+          
+                <div class="col-md-6 permission-column">
+          
+                  <div class="form-check permission-item">
+                    <input class="form-check-input" type="checkbox" id="entityListing">
+          
+                    <label class="form-check-label" for="entityListing">
+                      Entity Listing
+                    </label>
+                  </div>
+          
+                </div>
+          
+                <div class="col-md-6 permission-column">
+          
+                  <div class="form-check permission-item">
+                    <input class="form-check-input" type="checkbox" id="entityTypeListing">
+          
+                    <label class="form-check-label" for="entityTypeListing">
+                      Entity Type Listing
+                    </label>
+                  </div>
+          
+                </div>
+          
+              </div>
+            </div>
+            <!-- Device Management -->
+            <div class="permission-section">
+          
+              <div class="row align-items-center my-2">
+          
+                <div class="col">
+                  <h6 class="permission-title">
+                    Device Management
+                  </h6>
+                </div>
+          
+                <div class="col-auto">
+                  <div class="form-check select-all">
+                    <input class="form-check-input" type="checkbox" id="selectDeviceAll">
+          
+                    <label class="form-check-label" for="selectDeviceAll">
+                      Select all
+                    </label>
+                  </div>
+                </div>
+          
+              </div>
+          
+              <div class="row">
+          
+                <!-- Left -->
+                <div class="col-md-6 permission-column">
+          
+                  <div class="form-check permission-item">
+                    <input class="form-check-input" type="checkbox" id="deviceListing">
+          
+                    <label class="form-check-label" for="deviceListing">
+                      Device Listing
+                    </label>
+                  </div>
+          
+                  <div class="form-check permission-item">
+                    <input class="form-check-input" type="checkbox" id="editDevice">
+          
+                    <label class="form-check-label" for="editDevice">
+                      Edit Device
+                    </label>
+                  </div>
+          
+                  <div class="form-check permission-item">
+                    <input class="form-check-input" type="checkbox" id="deviceTypeListing">
+          
+                    <label class="form-check-label" for="deviceTypeListing">
+                      Device Type Listing
+                    </label>
+                  </div>
+          
+                  <div class="form-check permission-item">
+                    <input class="form-check-input" type="checkbox" id="editDeviceType">
+          
+                    <label class="form-check-label" for="editDeviceType">
+                      Edit Device Type
+                    </label>
+                  </div>
+          
+                  <div class="form-check permission-item">
+                    <input class="form-check-input" type="checkbox" id="downlinkCommunication">
+          
+                    <label class="form-check-label" for="downlinkCommunication">
+                      Downlink Communication
+                    </label>
+                  </div>
+          
+                </div>
+          
+                <!-- Right -->
+                <div class="col-md-6 permission-column">
+          
+                  <div class="form-check permission-item">
+                    <input class="form-check-input" type="checkbox" id="addDevice">
+          
+                    <label class="form-check-label" for="addDevice">
+                      Add Device
+                    </label>
+                  </div>
+          
+                  <div class="form-check permission-item">
+                    <input class="form-check-input" type="checkbox" id="deleteDevice">
+          
+                    <label class="form-check-label" for="deleteDevice">
+                      Delete Device
+                    </label>
+                  </div>
+          
+                  <div class="form-check permission-item">
+                    <input class="form-check-input" type="checkbox" id="addDeviceType">
+          
+                    <label class="form-check-label" for="addDeviceType">
+                      Add Device Type
+                    </label>
+                  </div>
+          
+                  <div class="form-check permission-item">
+                    <input class="form-check-input" type="checkbox" id="deleteDeviceType">
+          
+                    <label class="form-check-label" for="deleteDeviceType">
+                      Delete Device Type
+                    </label>
+                  </div>
+          
+                  <div class="form-check permission-item">
+                    <input class="form-check-input" type="checkbox" id="otaUpdates">
+          
+                    <label class="form-check-label" for="otaUpdates">
+                      OTA Updates
+                    </label>
+                  </div>
+          
+                </div>
+          
+              </div>
+            </div>
+            <!-- Dashboard Management -->
+            <div class="permission-section">
+          
+              <div class="row align-items-center my-2">
+          
+                <div class="col">
+                  <h6 class="permission-title">
+                    Dashboard Management
+                  </h6>
+                </div>
+          
+                <div class="col-auto">
+                  <div class="form-check select-all">
+                    <input class="form-check-input" type="checkbox" id="selectEntityAll">
+          
+                    <label class="form-check-label" for="selectEntityAll">
+                      Select all
+                    </label>
+                  </div>
+                </div>
+          
+              </div>
+          
+              <div class="row">          
+                <div class="col-md-6 permission-column">          
+                  <div class="form-check permission-item">
+                    <input class="form-check-input" type="checkbox" id="entityListing">
+          
+                    <label class="form-check-label" for="entityListing">
+                       Dashboard Listing
+                    </label>
+                  </div>          
+                </div>          
+                <div class="col-md-6 permission-column">          
+                  <div class="form-check permission-item">
+                    <input class="form-check-input" type="checkbox" id="entityTypeListing">          
+                    <label class="form-check-label" for="entityTypeListing">
+                      Add Dashboard
+                    </label>
+                  </div>          
+                </div>          
+              </div>
+              <div class="row">          
+                <div class="col-md-6 permission-column">          
+                  <div class="form-check permission-item">
+                    <input class="form-check-input" type="checkbox" id="entityListing">
+          
+                    <label class="form-check-label" for="entityListing">
+                       Edit Listing
+                    </label>
+                  </div>          
+                </div>          
+                <div class="col-md-6 permission-column">          
+                  <div class="form-check permission-item">
+                    <input class="form-check-input" type="checkbox" id="entityTypeListing">          
+                    <label class="form-check-label" for="entityTypeListing">
+                      Delete Dashboard
+                    </label>
+                  </div>          
+                </div>          
+              </div>
+            </div>
+          </div>
+
+        </mat-card-content>
+
+      </mat-card>
+
+    </div>
+
+  </div>
+
+</form>

@@ -23,7 +23,7 @@ import { CommonModule } from '@angular/common';
     MatInputModule,
     MatSelectModule,
     CommonModule
-  ],
+],
   templateUrl: './user-add-sa.component.html',
   styleUrl: './user-add-sa.component.scss'
 })

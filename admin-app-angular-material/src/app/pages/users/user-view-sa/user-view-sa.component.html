@@ -1,2 +1,155 @@
-<p>user-view-sa works!</p>
-<a (click)="editUser(user)">Click to edit</a>
+<div class="card page-card p-3">
+    <!-- <p>user-view-sa works!</p>
+    <a (click)="editUser(user)">Click to edit</a> -->
+    <h1 class="h4 mb-4">Manage User</h1>
+    <div class="profile-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Profile Image -->
+                <div class="col-lg-3 col-md-4 profile-image-section">
+                    <div class="profile-title">
+                        Profile image
+                    </div>
+                     <div class="rounded-circle p-2 profile-icon">
+                        <i class="bi bi-person-fill"></i>
+                     </div>
+                    <!-- <img src="assets/images/profile-placeholder.png" alt="Profile image" class="profile-image"> -->
+                </div>
+                <!-- User Details -->
+                <div class="col-lg-5 col-md-8">
+
+                    <div class="profile-details">
+
+                        <div class="row mb-2">
+                            <div class="col-md-4 fw-bold">
+                                First Name:
+                            </div>
+                            <div class="col-md-8">
+                                John
+                            </div>
+                        </div>
+
+                        <div class="row mb-2">
+                            <div class="col-md-4 fw-bold">
+                                Last Name:
+                            </div>
+                            <div class="col-md-8">
+                                4432
+                            </div>
+                        </div>
+
+                        <div class="row mb-2">
+                            <div class="col-md-4 fw-bold">
+                                Email:
+                            </div>
+                            <div class="col-md-8">
+                                <!-- john.doe178539377316 &angmsdaa; example.com -->
+                                {{"john.doe1785393773168@example.com"}}
+                            </div>
+                        </div>
+
+                        <div class="row mb-2">
+                            <div class="col-md-4 fw-bold">
+                                Phone:
+                            </div>
+                            <div class="col-md-8">
+                                &nbsp;
+                            </div>
+                        </div>
+
+                        <div class="row mb-2">
+                            <div class="col-md-4 fw-bold">
+                                Role:
+                            </div>
+                            <div class="col-md-8">
+                                TestRole_7119
+                            </div>
+                        </div>
+
+                        <div class="row mb-2">
+                            <div class="col-md-4 fw-bold">
+                                Status:
+                            </div>
+                            <div class="col-md-8">
+                                Awaiting Password Change
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Actions -->
+                <div class="col-lg-4 col-md-12">
+
+                    <div class="actions">
+
+                        <!-- Edit -->
+                        <div class="action-item">
+                            <button type="button" class="action-button" (click)="editUser(user)">
+                                <i class="bi bi-pencil-fill"></i>
+                            </button>
+                            <span class="action-label ms-2">Edit</span>
+                        </div>
+
+                        <!-- Suspend -->
+                        <div class="action-item">
+                            <button type="button" class="action-button">
+                                <i class="bi bi-person-fill-slash"></i>
+                            </button>
+                            <span class="action-label ms-2">Suspend</span>
+                        </div>
+
+                        <!-- Impersonate -->
+                        <div class="action-item">
+                            <button type="button" class="action-button">
+                                <i class="bi bi-person-fill"></i>
+                            </button>
+                            <span class="action-label ms-2">Impersonate</span>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="action-item">
+                            <button type="button" class="action-button">
+                                <i class="bi bi-envelope-fill"></i>
+                            </button>
+                            <span class="action-label ms-2">Email</span>
+                        </div>
+
+                        <!-- Credentials -->
+                        <div class="action-item">
+                            <button type="button" class="action-button">
+                                <i class="bi bi-shield-fill"></i>
+                            </button>
+                            <span class="action-label ms-2">Credentials</span>
+                        </div>
+
+                        <!-- Delete -->
+                        <div class="action-item">
+                            <button type="button" class="action-button">
+                                <i class="bi bi-trash-fill"></i>
+                            </button>
+                            <span class="action-label ms-2">Delete</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Footer -->
+            <div class="profile-footer">
+
+                <button type="button" class="btn btn-secondary float-end px-3">
+                    CANCEL
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
