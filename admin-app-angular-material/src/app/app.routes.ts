@@ -9,11 +9,8 @@ import { authGuard } from './core/guards/auth.guard';
 import { UsersComponent } from './pages/users/users.component';
 import { UserEditSaComponent } from './pages/users/user-edit-sa/user-edit-sa.component';
 import { UserViewSaComponent } from './pages/users/user-view-sa/user-view-sa.component';
-
-import { UserListComponent } from './pages/user-list/user-list.component';
-import { UserListViewComponent } from './pages/user-list/users-list-view/users-list-view.component';
-import { UserAddComponent } from './pages/user-list/user-add/user-add.component';
-import { UserEditComponent } from './pages/user-list/user-edit/user-edit.component';
+import { UserListSaComponent } from './pages/users/user-list-sa/user-list-sa.component';
+import { UserAddSaComponent } from './pages/users/user-add-sa/user-add-sa.component';
 
 
 import {AlertsComponent} from "./pages/alerts/alerts.component";
@@ -32,7 +29,6 @@ import { DashboardMngmtComponent } from './pages/dashboard-mngmt/dashboard-mngmt
 import { RoleListComponent } from './pages/role/role-list/role-list.component';
 import { AddRoleComponent } from './pages/role/add-role/add-role.component';
 import { EditRoleComponent } from './pages/role/edit-role/edit-role.component';
-import { UserListSaComponent } from './pages/users/user-list-sa/user-list-sa.component';
 
 
 export const routes: Routes = [

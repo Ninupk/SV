@@ -42,6 +42,7 @@ interface User {
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
+    ConfirmDialogComponent
   ],
   templateUrl: './user-list-sa.component.html',
   styleUrl: './user-list-sa.component.scss'
