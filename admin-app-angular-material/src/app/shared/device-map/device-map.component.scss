@@ -1,0 +1,101 @@
+.device-map__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.device-map__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.device-map__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-bg-surface);
+  color: var(--color-text-secondary);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 120ms ease, border-color 120ms ease, color 120ms ease;
+
+  &:hover {
+    background: var(--color-primary-light);
+  }
+
+  &--active {
+    background: var(--color-primary-light);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+}
+
+.device-map__count {
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+.device-map__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+
+  &--online { background: var(--color-success); }
+  &--alert { background: var(--color-danger); }
+  &--offline { background: #9ca3af; }
+}
+
+.device-map__unmapped {
+  font-size: 12.5px;
+  color: #b45309;
+}
+
+.device-map__stage {
+  position: relative;
+}
+
+.device-map__canvas {
+  width: 100%;
+  height: 360px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-bg-canvas);
+
+  // Keep Leaflet's z-index stack below the app's topbar/sidenav.
+  ::ng-deep .leaflet-pane,
+  ::ng-deep .leaflet-top,
+  ::ng-deep .leaflet-bottom {
+    z-index: 1;
+  }
+
+  ::ng-deep .leaflet-popup-content {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+}
+
+.device-map__empty {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 16px;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  background: rgba(244, 246, 251, 0.85);
+  border-radius: var(--radius-md);
+  pointer-events: none;
+}

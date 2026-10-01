@@ -1,4 +1,108 @@
-<div class="card page-card p-3">
+<mat-card class="page-card">
+  <mat-card-header>
+    <mat-card-title>Manage User</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="profile-wrapper">
+
+      <!-- Profile image -->
+      <section class="profile-image-section">
+        <div class="profile-title">Profile image</div>
+        <div class="profile-icon">
+          <mat-icon>person</mat-icon>
+        </div>
+      </section>
+
+      <!-- User details -->
+      <section class="profile-details">
+        <div class="detail-row">
+          <span class="label">First Name:</span>
+          <span class="value">{{ user.firstName }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="label">Last Name:</span>
+          <span class="value">{{ user.lastName }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="label">Email:</span>
+          <span class="value">{{ user.email }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="label">Phone:</span>
+          <span class="value">{{ user.phone || '—' }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="label">Role:</span>
+          <span class="value">{{ user.role }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="label">Status:</span>
+          <span class="value">
+            <mat-chip-set>
+              <mat-chip>{{ user.status }}</mat-chip>
+            </mat-chip-set>
+          </span>
+        </div>
+      </section>
+
+      <!-- Actions -->
+      <section class="actions">
+        <div class="action-item">
+          <button mat-mini-fab color="primary" type="button" (click)="editUser(user)" aria-label="Edit">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <span class="action-label">Edit</span>
+        </div>
+
+        <div class="action-item">
+          <button mat-mini-fab color="primary" type="button" aria-label="Suspend">
+            <mat-icon>person_off</mat-icon>
+          </button>
+          <span class="action-label">Suspend</span>
+        </div>
+
+        <div class="action-item">
+          <button mat-mini-fab color="primary" type="button" aria-label="Impersonate">
+            <mat-icon>supervisor_account</mat-icon>
+          </button>
+          <span class="action-label">Impersonate</span>
+        </div>
+
+        <div class="action-item">
+          <button mat-mini-fab color="primary" type="button" aria-label="Email">
+            <mat-icon>email</mat-icon>
+          </button>
+          <span class="action-label">Email</span>
+        </div>
+
+        <div class="action-item">
+          <button mat-mini-fab color="primary" type="button" aria-label="Credentials">
+            <mat-icon>shield</mat-icon>
+          </button>
+          <span class="action-label">Credentials</span>
+        </div>
+
+        <div class="action-item">
+          <button mat-mini-fab color="warn" type="button" aria-label="Delete">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <span class="action-label">Delete</span>
+        </div>
+      </section>
+    </div>
+  </mat-card-content>
+
+  <mat-divider></mat-divider>
+
+  <mat-card-actions align="end">
+    <button mat-stroked-button type="button" (click)="cancel()">CANCEL</button>
+  </mat-card-actions>
+</mat-card>
+
+
+
+<div class="card page-card p-3 d-none">
     <!-- <p>user-view-sa works!</p>
     <a (click)="editUser(user)">Click to edit</a> -->
     <h1 class="h4 mb-4">Manage User</h1>

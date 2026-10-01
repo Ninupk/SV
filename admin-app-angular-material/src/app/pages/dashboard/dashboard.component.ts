@@ -11,6 +11,9 @@ import {
   ConfirmDialogComponent,
   ConfirmDialogData,
 } from '../../shared/modals/confirm-dialog/confirm-dialog.component';
+import { DeviceMapComponent } from '../../shared/device-map/device-map.component';
+// import { ClientMapComponent } from '../../shared/client-map/client-map.component';
+import { DeviceService } from '../../core/services/device.service';
 
 interface StatCard {
   label: string;
@@ -38,7 +41,8 @@ interface ClientRow {
     MatTableModule,
     MatChipsModule,
     MatTooltipModule,
-  ],
+    DeviceMapComponent
+],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })
@@ -59,6 +63,7 @@ export class DashboardComponent {
     { name: 'Noah Williams', company: 'Initech', devices: 0, status: 'Inactive' },
     { name: 'Maya Patel', company: 'Umbrella Inc.', devices: 9, status: 'Active' },
   ];
+deviceService: any;
 
   constructor(private readonly dialog: MatDialog) {}
 

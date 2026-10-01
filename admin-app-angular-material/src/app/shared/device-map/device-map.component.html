@@ -1,0 +1,34 @@
+<div class="device-map">
+  <div class="device-map__toolbar">
+    <div class="device-map__filters" role="group" aria-label="Filter devices by status">
+      @for (filter of filters; track filter) {
+        <button
+          type="button"
+          class="device-map__chip"
+          [class.device-map__chip--active]="activeFilter === filter"
+          [attr.aria-pressed]="activeFilter === filter"
+          (click)="setFilter(filter)"
+        >
+          @if (filter !== 'All') {
+            <span class="device-map__dot" [class]="'device-map__dot--' + filter.toLowerCase()"></span>
+          }
+          {{ filter }}
+          <span class="device-map__count">{{ countFor(filter) }}</span>
+        </button>
+      }
+    </div>
+
+    @if (unmappedCount > 0) {
+      <span class="device-map__unmapped">{{ unmappedCount }} device{{ unmappedCount === 1 ? '' : 's' }} not mapped yet</span>
+    }
+  </div>
+
+  <div class="device-map__stage">
+    <div #mapContainer class="device-map__canvas"></div>
+    @if (visible.length === 0) {
+      <div class="device-map__empty">
+        {{ mapped.length === 0 ? 'No devices have been mapped to a location yet.' : 'No ' + activeFilter.toLowerCase() + ' devices to show.' }}
+      </div>
+    }
+  </div>
+</div>
