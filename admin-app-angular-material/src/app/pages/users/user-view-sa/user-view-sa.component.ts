@@ -26,19 +26,19 @@ import { MatDividerModule } from '@angular/material/divider';
   templateUrl: './user-view-sa.component.html',
   styleUrl: './user-view-sa.component.scss'
 })
-// export class UserViewSaComponent {
-//   user: any
-//   constructor(
-//     private router: Router
-//   ){}
-//   editUser(user: any){
-//     if(!user){
-//       user ={id: 1}
-//     }
-//     let route = `/user/${user.id}/edit`
-//     this.router.navigate([route])
-//   }
-// }
+export class UserViewSaComponent {
+  user: any
+  constructor(
+    private router: Router
+  ){}
+  editUser(user: any){
+    if(!user){
+      user ={id: 1}
+    }
+    let route = `/user/${user.id}/edit`
+    this.router.navigate([route])
+  }
+}
 
 export class UserViewSaComponent {
   user = {

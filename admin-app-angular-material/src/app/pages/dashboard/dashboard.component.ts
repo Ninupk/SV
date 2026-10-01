@@ -63,7 +63,7 @@ export class DashboardComponent {
     { name: 'Noah Williams', company: 'Initech', devices: 0, status: 'Inactive' },
     { name: 'Maya Patel', company: 'Umbrella Inc.', devices: 9, status: 'Active' },
   ];
-deviceService: any;
+deviceService: DeviceService = new DeviceService();
 
   constructor(private readonly dialog: MatDialog) {}
 

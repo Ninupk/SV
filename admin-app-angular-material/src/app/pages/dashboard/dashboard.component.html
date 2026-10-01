@@ -21,7 +21,7 @@
   }
 </section>
 
-<mat-card class="app-card table-card">
+<mat-card class="app-card table-card d-none">
   <div class="table-card__head">
     <div>
       <h2 class="table-card__title">Recent clients</h2>
@@ -77,37 +77,10 @@
 </mat-card>
 
 <div class="">
-  <section class="stats-grid">
-  @for (stat of stats; track stat.label) {
-    <mat-card class="app-card stat-card">
-      <div class="stat-card__icon">
-        <mat-icon>{{ stat.icon }}</mat-icon>
-      </div>
-      <div class="stat-card__body">
-        <p class="stat-card__label">{{ stat.label }}</p>
-        <div class="stat-card__row">
-          <span class="stat-card__value">{{ stat.value }}</span>
-          <span class="stat-card__delta" [class.stat-card__delta--down]="stat.trend === 'down'">
-            <mat-icon>{{ stat.trend === 'up' ? 'trending_up' : 'trending_down' }}</mat-icon>
-            {{ stat.delta }}
-          </span>
-        </div>
-      </div>
-    </mat-card>
-  }
-</section>
 
-<!-- <mat-card class="app-card map-card">
+<mat-card class="app-card map-card p-3">
   <div class="map-card__head">
-    <h2 class="map-card__title">Client Locations</h2>
-    <p class="map-card__subtitle">Where your clients are, at a glance.</p>
-  </div>
-  <app-client-map></app-client-map>
-</mat-card> -->
-
-<mat-card class="app-card map-card">
-  <div class="map-card__head">
-    <h2 class="map-card__title">Device Locations</h2>
+    <h1 class="h5 mb-3">Find your mapped devices</h1>
     <p class="map-card__subtitle">Devices mapped to a location, by live status.</p>
   </div>
   <app-device-map
@@ -116,7 +89,7 @@
   ></app-device-map>
 </mat-card>
 
-<mat-card class="app-card table-card">
+<mat-card class="app-card table-card d-none">
   <div class="table-card__head">
     <div>
       <h2 class="table-card__title">Recent clients</h2>
@@ -128,7 +101,7 @@
     </button>
   </div>
 
-  <div class="table-card__scroll">
+  <div class="table-card__scroll d-none">
     <table mat-table [dataSource]="clients" class="clients-table">
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Name</th>
