@@ -1,0 +1,72 @@
+.page-card {
+  padding: 16px;
+}
+
+.profile-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  padding: 16px 0;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 200px 1fr;
+  }
+  @media (min-width: 1200px) {
+    grid-template-columns: 200px 1fr 260px;
+  }
+}
+
+.profile-image-section {
+  text-align: center;
+
+  .profile-title {
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  .profile-icon {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background: var(--mat-sys-surface-container-high, #e0e0e0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    mat-icon {
+      width: 72px;
+      height: 72px;
+      font-size: 72px;
+    }
+  }
+}
+
+.profile-details {
+  .detail-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 8px;
+    margin-bottom: 12px;
+    align-items: center;
+
+    .label { font-weight: 600; }
+    .value { word-break: break-word; }
+  }
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  .action-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+}
+.mat-mdc-card-header {
+  margin: 0 !important;
+  padding: 0 !important;
+}

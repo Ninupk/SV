@@ -3,14 +3,30 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 
+import { MatDialogContent } from '@angular/material/dialog';
+import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule, MatIcon } from '@angular/material/icon';
+import { MatChipsModule, MatChipSet, MatChip } from '@angular/material/chips';
+import { MatDividerModule, MatDivider } from '@angular/material/divider';
+
 @Component({
   selector: 'app-user-edit-sa',
   standalone: true,
  imports: [
     ReactiveFormsModule,
     MatDialogModule,
-    MatButtonModule
-  ],
+    MatButtonModule,
+    MatDialogContent,
+    CommonModule,
+    MatCardModule,
+    MatIcon,
+    MatDivider,
+    MatChipSet,
+    MatChip
+],
   templateUrl: './user-edit-sa.component.html',
   styleUrl: './user-edit-sa.component.scss'
 })
@@ -55,7 +71,7 @@ export class UserEditSaComponent {
   resetForm(): void {
     this.userForm.reset();
   }
-
+  
   cancel(): void {
     // this.dialogRef.close();
   }
