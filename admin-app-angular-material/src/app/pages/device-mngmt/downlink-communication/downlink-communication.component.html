@@ -1,1 +1,273 @@
-<p>downlink-communication works!</p>
+<div class="card p-3">
+
+  <!-- Page Header -->
+  <h1 class="h4 mb-3">
+    Downlink Communication
+
+    <mat-icon
+      class="info-icon"
+      matTooltip="Send downlink communication to selected devices">
+      info
+    </mat-icon>
+  </h1>
+
+
+  <form [formGroup]="downlinkForm" (ngSubmit)="onSave()">
+
+    <!-- =========================================
+         SELECT DEVICES
+    ========================================== -->
+    <div class="form-row">
+
+      <!-- Label -->
+      <div class="form-label">
+        <label>
+          Select Devices
+          <span class="required">*</span>
+        </label>
+      </div>
+
+
+      <!-- Controls -->
+      <div class="form-controls">
+
+        <mat-radio-group formControlName="deviceSelection">
+
+          <!-- =====================================
+               ALL DEVICES
+          ====================================== -->
+          <mat-radio-button value="all">
+            All Devices
+          </mat-radio-button>
+
+
+          <!-- =====================================
+               DEVICE ID
+          ====================================== -->
+          <div class="radio-option">
+
+            <mat-radio-button value="deviceId">
+              Select Devices by Device ID
+            </mat-radio-button>
+
+
+            <!-- Device ID Input -->
+            <div class="conditional-field mt-2" *ngIf="downlinkForm.get('deviceSelection')?.value === 'deviceId'">
+
+              <mat-form-field
+                appearance="fill"
+                class="device-input-field">
+
+                <mat-label>Device ID</mat-label>
+
+                <input
+                  matInput
+                  type="text"
+                  formControlName="deviceId"
+                  placeholder="Enter Device ID">
+
+                <mat-error
+                  *ngIf="
+                    downlinkForm.get('deviceId')?.hasError('required')
+                  ">
+                  Device ID is required
+                </mat-error>
+
+              </mat-form-field>
+
+            </div>
+
+          </div>
+
+
+          <!-- =====================================
+               CREATED ON DATE
+          ====================================== -->
+          <div class="radio-option">
+
+            <mat-radio-button value="createdDate">
+              Select Devices by Created on Date
+            </mat-radio-button>
+
+
+            <!-- Date Pickers -->
+            <div class="conditional-field date-range row mt-2"
+              *ngIf="
+                downlinkForm.get('deviceSelection')?.value === 'createdDate'
+              ">
+                <div class="col-md-6">
+                    <!-- From Date -->
+                    <mat-form-field
+                      appearance="fill"
+                      class="date-field">
+      
+                      <mat-label>From Date</mat-label>
+      
+                      <input
+                        matInput
+                        [matDatepicker]="fromPicker"
+                        formControlName="fromDate"
+                        placeholder="Select From Date">
+      
+                      <mat-datepicker-toggle
+                        matIconSuffix
+                        [for]="fromPicker">
+                      </mat-datepicker-toggle>
+      
+                      <mat-datepicker #fromPicker></mat-datepicker>
+      
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <!-- To Date -->
+                    <mat-form-field
+                      appearance="fill"
+                      class="date-field">
+      
+                      <mat-label>To Date</mat-label>
+      
+                      <input
+                        matInput
+                        [matDatepicker]="toPicker"
+                        formControlName="toDate"
+                        placeholder="Select To Date">
+      
+                      <mat-datepicker-toggle
+                        matIconSuffix
+                        [for]="toPicker">
+                      </mat-datepicker-toggle>
+      
+                      <mat-datepicker #toPicker></mat-datepicker>
+      
+                    </mat-form-field>
+                </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- =====================================
+               DEVICE TYPES
+          ====================================== -->
+          <div class="radio-option">
+
+            <mat-radio-button value="deviceType">
+              Select Device Types
+            </mat-radio-button>
+
+
+            <!-- Device Type Input -->
+            <div
+              class="conditional-field"
+              *ngIf="
+                downlinkForm.get('deviceSelection')?.value === 'deviceType'
+              ">
+
+              <mat-form-field
+                appearance="fill"
+                class="device-input-field">
+
+                <mat-label>Device Type</mat-label>
+
+                <input
+                  matInput
+                  type="text"
+                  formControlName="deviceType"
+                  placeholder="Enter Device Type">
+
+                <mat-error
+                  *ngIf="
+                    downlinkForm.get('deviceType')?.hasError('required')
+                  ">
+                  Device Type is required
+                </mat-error>
+
+              </mat-form-field>
+
+            </div>
+
+          </div>
+
+        </mat-radio-group>
+
+      </div>
+
+    </div>
+
+
+    <!-- =========================================
+         PAYLOAD
+    ========================================== -->
+    <div class="form-row payload-row">
+
+      <div class="form-label payload-label">
+
+        <label>
+          Payload
+          <span class="required">*</span>
+
+          <mat-icon
+            class="info-icon small"
+            matTooltip="Enter the payload to be sent to the selected devices">
+            info
+          </mat-icon>
+        </label>
+
+      </div>
+
+
+      <div class="payload-control">
+
+        <mat-form-field
+          appearance="fill"
+          class="payload-field">
+
+          <textarea
+            matInput
+            formControlName="payload"
+            placeholder="Enter Payload.."
+            rows="3">
+          </textarea>
+
+          <mat-error
+            *ngIf="
+              downlinkForm.get('payload')?.hasError('required')
+            ">
+            Payload is required
+          </mat-error>
+
+        </mat-form-field>
+
+      </div>
+
+    </div>
+
+
+    <!-- =========================================
+         BUTTONS
+    ========================================== -->
+    <div class="form-actions">
+
+      <button
+        type="button"
+        mat-stroked-button
+        class="cancel-btn"
+        (click)="onCancel()">
+        CANCEL
+      </button>
+
+
+      <button
+        type="submit"
+        mat-flat-button
+        class="save-btn"
+        [disabled]="downlinkForm.invalid">
+        SAVE
+      </button>
+
+    </div>
+
+  </form>
+
+</div>
