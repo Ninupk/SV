@@ -1,1 +1,148 @@
-<p>edit-client works!</p>
+
+<div class="card page-card">
+    <div class="card-body">
+        <h1 class="h5 mb-3">Edit Client</h1>
+      <!-- Name -->
+      <div class="row align-items-start mb-5">
+        <label class="col-md-2 text-md-end pt-2">
+          Name <span class="text-danger">*</span>
+        </label>
+        <div class="col-md-10">
+          <input type="text" class="form-control form-control-line"
+                 placeholder="Name" required>
+        </div>
+      </div>
+    
+      <!-- Address -->
+      <div class="row mb-5">
+        <label class="col-md-2 text-md-end pt-2">
+          Address <span class="text-danger">*</span>
+        </label>
+    
+        <div class="col-md-10">
+          <div class="row g-4">
+            <div class="col-lg-5">
+              <input type="text" class="form-control form-control-line"
+                     placeholder="Street Name" required>
+            </div>
+    
+            <div class="col-lg-3">
+              <select class="form-select" aria-label="Country">
+                <option value="">Country</option>
+              </select>
+            </div>
+    
+            <div class="col-lg-4">
+              <select class="form-select" aria-label="State">
+                <option value="">State</option>
+              </select>
+            </div>
+    
+            <div class="col-lg-5">
+              <select class="form-select" aria-label="City">
+                <option value="">City</option>
+              </select>
+            </div>
+    
+            <div class="col-lg-4">
+              <input type="text" class="form-control form-control-line"
+                     placeholder="Zip code">
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Subscription -->
+      <div class="row mb-5">
+        <label class="col-md-2 text-md-end pt-2">
+          Subscription <span class="text-danger">*</span>
+        </label>
+    
+        <div class="col-md-10">
+          <div class="row g-4">
+            <div class="col-md-4">
+              <input type="number" class="form-control form-control-line"
+                     placeholder="Current cost">
+            </div>
+            <div class="col-md-4">
+              <input type="number" class="form-control form-control-line"
+                     placeholder="Maximum Devices">
+            </div>
+            <div class="col-md-4">
+              <input type="number" class="form-control form-control-line"
+                     placeholder="Maximum Users">
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Website -->
+      <div class="row mb-4">
+        <label class="col-md-2 text-md-end pt-2">
+          Website <span class="text-danger">*</span>
+        </label>
+        <div class="col-md-10">
+          <input type="url" class="form-control form-control-line"
+                 placeholder="URL" required>
+        </div>
+      </div>
+    
+      <!-- Location -->
+      <div class="row mb-5">
+        <label class="col-md-2 text-md-end pt-2">Location</label>
+        <div class="col-md-10">
+          <div class="row g-4 align-items-center">
+            <div class="col-md-4">
+              <input type="text" class="form-control form-control-line"
+                     placeholder="Latitude">
+            </div>
+            <div class="col-md-4">
+              <input type="text" class="form-control form-control-line"
+                     placeholder="Longitude">
+            </div>
+            <div class="col-auto">
+              <button type="button" class="btn text-primary p-1"
+                      aria-label="Select location">
+                <i class="bi bi-map fs-4"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Client Admin -->
+      <div class="border rounded-1 p-2 mb-4">
+        <h4 class="text-primary fw-light mb-4">
+          Client Admin <span class="text-danger">*</span>
+        </h4>
+    
+        <div class="bg-light p-3">
+          <div class="row g-4">
+            <div class="col-md-4">
+              <input type="text" class="form-control form-control-line"
+                     placeholder="Name" aria-label="Admin name">
+            </div>
+            <div class="col-md-4">
+              <input type="email" class="form-control form-control-line"
+                     placeholder="Email" aria-label="Admin email">
+            </div>
+            <div class="col-md-3">
+              <input type="tel" class="form-control form-control-line"
+                     placeholder="Phone" aria-label="Admin phone">
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Buttons -->
+      <div class="d-flex justify-content-end gap-3 mt-4">
+        <button type="button" class="btn btn-outline-secondary px-4">
+          CANCEL
+        </button>
+        <button type="submit" class="btn btn-primary px-4">
+          SAVE
+        </button>
+      </div>
+    
+    </div>
+</div>

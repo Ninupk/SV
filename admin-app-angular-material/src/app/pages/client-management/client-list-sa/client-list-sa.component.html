@@ -1,1 +1,174 @@
-<p>client-list-sa works!</p>
+<div class="card page-card">
+  <div class="card-body">
+    <!-- Page Header -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+      <h4 class="mb-0">Clients</h4>
+
+      <button type="button" class="btn btn-primary">
+        <i class="bi bi-plus-lg me-2"></i>Add Client
+      </button>
+    </div>
+
+    <!-- Search and Filters -->
+    <div class="row g-3 mb-4">
+      <div class="col-md-4">
+        <div class="input-group">
+          <span class="input-group-text bg-white">
+            <i class="bi bi-search"></i>
+          </span>
+          <input type="search" class="form-control" placeholder="Search clients...">
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <select class="form-select" aria-label="Filter by status">
+          <option value="">All Status</option>
+          <option value="active">Active</option>
+          <option value="inactive">Inactive</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Client Table -->
+    <div class="table-responsive">
+      <table class="table align-middle client-table">
+        <thead>
+          <tr>
+            <th scope="col" class="text-center checkbox-column">
+              <input class="form-check-input" type="checkbox" aria-label="Select all clients">
+            </th>
+            <th scope="col">Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">Website</th>
+            <th scope="col">Created On</th>
+            <th scope="col">Status</th>
+            <th scope="col" class="text-center">Actions</th>
+            <th scope="col" class="text-center">
+             <button type="button" class="btn btn-outline-danger action-btn" title="Delete client" aria-label="Delete client">
+                <i class="bi bi-trash3"></i>
+              </button>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td class="text-center">
+              <input class="form-check-input" type="checkbox" aria-label="Select Acme Technologies">
+            </td>
+            <td>
+              <div class="client-name">Acme Technologies</div>
+            </td>
+            <td>Kozhikode, Kerala, India</td>
+            <td>
+              <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="website-link">
+                example.com
+              </a>
+            </td>
+            <td>15 Oct 2026</td>
+            <td><span class="status-badge status-active">Active</span></td>
+            <td class="text-center">
+              <div class="d-flex justify-content-center gap-3">
+                <button type="button" class="action-btn" title="View client" aria-label="View client">
+                  <i class="bi bi-eye"></i>
+                </button>
+                <button type="button" class="btn btn-outline-primary action-btn" title="Edit client" aria-label="Edit client">
+                  <i class="bi bi-pencil"></i>
+                </button>
+              </div>
+            </td>
+            <td>
+              <button type="button" class="btn btn-outline-danger action-btn" title="Delete client" aria-label="Delete client">
+                <i class="bi bi-trash3"></i>
+              </button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="text-center">
+              <input class="form-check-input" type="checkbox" aria-label="Select Bright Solutions">
+            </td>
+            <td>
+              <div class="client-name">Bright Solutions</div>
+            </td>
+            <td>Kochi, Kerala, India</td>
+            <td>
+              <a href="https://example.org" target="_blank" rel="noopener noreferrer" class="website-link">
+                example.org
+              </a>
+            </td>
+            <td>10 Oct 2026</td>
+            <td><span class="status-badge status-active">Active</span></td>
+            <td class="text-center">
+              <div class="d-flex justify-content-center gap-3">
+                <button type="button" class="btn btn-outline-primary action-btn" title="Suspend Client" aria-label="Suspend Client">
+                  <i class="bi bi-pause-circle"></i>
+                </button>
+                <button type="button" class="btn btn-outline-primary action-btn" title="Edit client" aria-label="Edit client">
+                  <i class="bi bi-pencil"></i>
+                </button>
+              </div>
+            </td>
+            <td>
+              <button type="button" class="btn btn-outline-danger action-btn" title="Delete client" aria-label="Delete client">
+                <i class="bi bi-trash3"></i>
+              </button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="text-center">
+              <input class="form-check-input" type="checkbox" aria-label="Select Nova Systems">
+            </td>
+            <td>
+              <div class="client-name">Nova Systems</div>
+            </td>
+            <td>Bengaluru, Karnataka, India</td>
+            <td>
+              <a href="https://example.net" target="_blank" rel="noopener noreferrer" class="website-link">
+                example.net
+              </a>
+            </td>
+            <td>05 Oct 2026</td>
+            <td><span class="status-badge status-inactive">Inactive</span></td>
+            <td class="text-center">
+              <div class="d-flex justify-content-center gap-3">
+                <button type="button" class="action-btn" title="View client" aria-label="View client">
+                  <i class="bi bi-eye"></i>
+                </button>
+                <button type="button" class="btn btn-outline-primary action-btn" title="Edit client" aria-label="Edit client">
+                  <i class="bi bi-pencil"></i>
+                </button>
+              </div>
+            </td>
+            <td>
+              <button type="button" class="btn btn-outline-danger action-btn" title="Delete client" aria-label="Delete client">
+                <i class="bi bi-trash3"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Table Footer -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mt-3">
+      <small class="text-muted">Showing 1 to 3 of 3 entries</small>
+
+      <nav aria-label="Client listing pagination">
+        <ul class="pagination pagination-sm mb-0">
+          <li class="page-item disabled">
+            <a class="page-link" href="#" aria-label="Previous">Previous</a>
+          </li>
+          <li class="page-item active">
+            <a class="page-link" href="#" aria-current="page">1</a>
+          </li>
+          <li class="page-item disabled">
+            <a class="page-link" href="#" aria-label="Next">Next</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+  </div>
+</div>

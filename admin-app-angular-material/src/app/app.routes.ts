@@ -14,7 +14,6 @@ import { UserAddSaComponent } from './pages/users/user-add-sa/user-add-sa.compon
 
 
 import {AlertsComponent} from "./pages/alerts/alerts.component";
-import {ClientListComponent} from "./pages/client-list/client-list.component";
 import {EntityComponent} from "./pages/entity/entity.component";
 import { EntityListComponent } from './pages/entity/entity-list/entity-list.component';
 import {EntityTypeComponent} from "./pages/entity/entity-type/entity-type.component";
@@ -29,6 +28,10 @@ import { DashboardMngmtComponent } from './pages/dashboard-mngmt/dashboard-mngmt
 import { RoleListComponent } from './pages/role/role-list/role-list.component';
 import { AddRoleComponent } from './pages/role/add-role/add-role.component';
 import { EditRoleComponent } from './pages/role/edit-role/edit-role.component';
+import { ClientManagementComponent } from './pages/client-management/client-management.component';
+import { ClientListSaComponent } from './pages/client-management/client-list-sa/client-list-sa.component';
+import { ClientAddComponent } from './pages/client-management/client-add/client-add.component';
+import { EditClientComponent } from './pages/client-management/edit-client/edit-client.component';
 
 
 export const routes: Routes = [
@@ -94,10 +97,26 @@ export const routes: Routes = [
         ],
       },
       {
-        path: 'client-list',
-        component: ClientListComponent,
-        title: 'Client List',
-        data: { breadcrumb: ['Client Management', 'Client List'] },
+        path: 'client-management',
+        component: ClientManagementComponent,
+        title: 'Client Management',
+        children: [
+          {
+            path: 'client-list',
+            component: ClientListSaComponent,
+            title: 'Client List',
+          },
+          {
+            path: 'client-add',
+            component: ClientAddComponent,
+            title: 'Client Add',
+          },
+          {
+            path: 'client-edit',
+            component: EditClientComponent,
+            title: 'Client Edit',
+          }
+        ]
       },
       { path: 'alerts', component: AlertsComponent, title: 'Alerts' },
       { path: 'role', 
@@ -121,7 +140,6 @@ export const routes: Routes = [
           },
         ],
        },
-      { path: 'clients', component: ClientListComponent, title: 'Clients' },
       {
         path: 'device-mngmt',
         component: DeviceMngmtComponent,
