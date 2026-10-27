@@ -1,148 +1,176 @@
 
-<div class="card page-card">
-    <div class="card-body">
-        <h1 class="h5 mb-3">Edit Client</h1>
+<mat-card class="page-card">
+  <mat-card-content>
+    <h1 class="page-title">Edit Client</h1>
+
+    <form [formGroup]="clientForm" (ngSubmit)="saveClient()">
+
       <!-- Name -->
-      <div class="row align-items-start mb-5">
-        <label class="col-md-2 text-md-end pt-2">
-          Name <span class="text-danger">*</span>
-        </label>
-        <div class="col-md-10">
-          <input type="text" class="form-control form-control-line"
-                 placeholder="Name" required>
+      <div class="form-row">
+        <label class="form-label">Name <span>*</span></label>
+        <div class="form-content">
+          <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" />
+            <mat-error>Name is required</mat-error>
+          </mat-form-field>
         </div>
       </div>
-    
+
       <!-- Address -->
-      <div class="row mb-5">
-        <label class="col-md-2 text-md-end pt-2">
-          Address <span class="text-danger">*</span>
-        </label>
-    
-        <div class="col-md-10">
-          <div class="row g-4">
-            <div class="col-lg-5">
-              <input type="text" class="form-control form-control-line"
-                     placeholder="Street Name" required>
-            </div>
-    
-            <div class="col-lg-3">
-              <select class="form-select" aria-label="Country">
-                <option value="">Country</option>
-              </select>
-            </div>
-    
-            <div class="col-lg-4">
-              <select class="form-select" aria-label="State">
-                <option value="">State</option>
-              </select>
-            </div>
-    
-            <div class="col-lg-5">
-              <select class="form-select" aria-label="City">
-                <option value="">City</option>
-              </select>
-            </div>
-    
-            <div class="col-lg-4">
-              <input type="text" class="form-control form-control-line"
-                     placeholder="Zip code">
-            </div>
+      <div class="form-row">
+        <label class="form-label">Address <span>*</span></label>
+        <div class="form-content">
+          <div class="field-grid address-grid">
+            <mat-form-field appearance="outline">
+              <mat-label>Street Name</mat-label>
+              <input matInput formControlName="street" />
+              <mat-error>Street is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Country</mat-label>
+              <mat-select formControlName="country">
+                @for (country of countries; track country) {
+                  <mat-option [value]="country">{{ country }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>State</mat-label>
+              <mat-select formControlName="state">
+                @for (state of states; track state) {
+                  <mat-option [value]="state">{{ state }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>City</mat-label>
+              <mat-select formControlName="city">
+                @for (city of cities; track city) {
+                  <mat-option [value]="city">{{ city }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Zip Code</mat-label>
+              <input matInput formControlName="zipCode" />
+            </mat-form-field>
           </div>
         </div>
       </div>
-    
+
       <!-- Subscription -->
-      <div class="row mb-5">
-        <label class="col-md-2 text-md-end pt-2">
-          Subscription <span class="text-danger">*</span>
+      <div class="form-row">
+        <label class="form-label">
+          Subscription <span>*</span>
         </label>
-    
-        <div class="col-md-10">
-          <div class="row g-4">
-            <div class="col-md-4">
-              <input type="number" class="form-control form-control-line"
-                     placeholder="Current cost">
-            </div>
-            <div class="col-md-4">
-              <input type="number" class="form-control form-control-line"
-                     placeholder="Maximum Devices">
-            </div>
-            <div class="col-md-4">
-              <input type="number" class="form-control form-control-line"
-                     placeholder="Maximum Users">
-            </div>
+
+        <div class="form-content">
+          <div class="field-grid three-columns">
+            <mat-form-field appearance="outline">
+              <mat-label>Current Cost</mat-label>
+              <input matInput type="number" formControlName="currentCost" />
+              <mat-error>Current cost is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Maximum Devices</mat-label>
+              <input matInput type="number" formControlName="maxDevices" />
+              <mat-error>Maximum devices is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Maximum Users</mat-label>
+              <input matInput type="number" formControlName="maxUsers" />
+              <mat-error>Maximum users is required</mat-error>
+            </mat-form-field>
           </div>
         </div>
       </div>
-    
+
       <!-- Website -->
-      <div class="row mb-4">
-        <label class="col-md-2 text-md-end pt-2">
-          Website <span class="text-danger">*</span>
-        </label>
-        <div class="col-md-10">
-          <input type="url" class="form-control form-control-line"
-                 placeholder="URL" required>
+      <div class="form-row">
+        <label class="form-label">Website <span>*</span></label>
+
+        <div class="form-content">
+          <mat-form-field appearance="outline">
+            <mat-label>Website URL</mat-label>
+            <input matInput type="url" formControlName="website" />
+            <mat-error>Enter a valid website URL</mat-error>
+          </mat-form-field>
         </div>
       </div>
-    
+
       <!-- Location -->
-      <div class="row mb-5">
-        <label class="col-md-2 text-md-end pt-2">Location</label>
-        <div class="col-md-10">
-          <div class="row g-4 align-items-center">
-            <div class="col-md-4">
-              <input type="text" class="form-control form-control-line"
-                     placeholder="Latitude">
-            </div>
-            <div class="col-md-4">
-              <input type="text" class="form-control form-control-line"
-                     placeholder="Longitude">
-            </div>
-            <div class="col-auto">
-              <button type="button" class="btn text-primary p-1"
-                      aria-label="Select location">
-                <i class="bi bi-map fs-4"></i>
-              </button>
-            </div>
+      <div class="form-row">
+        <label class="form-label">Location</label>
+
+        <div class="form-content">
+          <div class="field-grid location-grid">
+            <mat-form-field appearance="outline">
+              <mat-label>Latitude</mat-label>
+              <input matInput formControlName="latitude" />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Longitude</mat-label>
+              <input matInput formControlName="longitude" />
+            </mat-form-field>
+
+            <button
+              mat-icon-button
+              color="primary"
+              type="button"
+              aria-label="Select location"
+              (click)="selectLocation()">
+              <mat-icon>map</mat-icon>
+            </button>
           </div>
         </div>
       </div>
-    
+
       <!-- Client Admin -->
-      <div class="border rounded-1 p-2 mb-4">
-        <h4 class="text-primary fw-light mb-4">
-          Client Admin <span class="text-danger">*</span>
-        </h4>
-    
-        <div class="bg-light p-3">
-          <div class="row g-4">
-            <div class="col-md-4">
-              <input type="text" class="form-control form-control-line"
-                     placeholder="Name" aria-label="Admin name">
-            </div>
-            <div class="col-md-4">
-              <input type="email" class="form-control form-control-line"
-                     placeholder="Email" aria-label="Admin email">
-            </div>
-            <div class="col-md-3">
-              <input type="tel" class="form-control form-control-line"
-                     placeholder="Phone" aria-label="Admin phone">
-            </div>
-          </div>
+      <section class="admin-section">
+        <h2>Client Admin <span>*</span></h2>
+
+        <div class="admin-fields">
+          <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="adminName" />
+            <mat-error>Admin name is required</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="adminEmail" />
+            <mat-error>Enter a valid email</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Phone</mat-label>
+            <input matInput type="tel" formControlName="adminPhone" />
+          </mat-form-field>
         </div>
-      </div>
-    
+      </section>
+
       <!-- Buttons -->
-      <div class="d-flex justify-content-end gap-3 mt-4">
-        <button type="button" class="btn btn-outline-secondary px-4">
+      <div class="form-actions">
+        <button
+          mat-stroked-button
+          type="button"
+          (click)="cancelForm()">
           CANCEL
         </button>
-        <button type="submit" class="btn btn-primary px-4">
+
+        <button mat-flat-button color="primary" type="submit">
           SAVE
         </button>
       </div>
-    
-    </div>
-</div>
+
+    </form>
+  </mat-card-content>
+</mat-card>

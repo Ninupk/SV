@@ -1,174 +1,121 @@
-<div class="card page-card">
-  <div class="card-body">
-    <!-- Page Header -->
-    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
-      <h4 class="mb-0">Clients</h4>
-
-      <button type="button" class="btn btn-primary">
-        <i class="bi bi-plus-lg me-2"></i>Add Client
+<mat-card class="page-card">
+  <mat-card-content>
+    <!-- Page header -->
+    <div class="page-header">
+      <h1 class="page-title">Clients</h1>
+      <button mat-flat-button color="primary" type="button">
+        <mat-icon>add</mat-icon>
+        Add Client
       </button>
     </div>
 
-    <!-- Search and Filters -->
-    <div class="row g-3 mb-4">
-      <div class="col-md-4">
-        <div class="input-group">
-          <span class="input-group-text bg-white">
-            <i class="bi bi-search"></i>
-          </span>
-          <input type="search" class="form-control" placeholder="Search clients...">
-        </div>
-      </div>
+    <!-- Search and filters -->
+    <div class="filters">
+      <mat-form-field appearance="outline" subscriptSizing="dynamic" class="search-field">
+        <mat-icon matPrefix>search</mat-icon>
+        <input matInput type="search" placeholder="Search clients..." aria-label="Search clients" />
+      </mat-form-field>
 
-      <div class="col-md-3">
-        <select class="form-select" aria-label="Filter by status">
-          <option value="">All Status</option>
-          <option value="active">Active</option>
-          <option value="inactive">Inactive</option>
-        </select>
-      </div>
+      <mat-form-field appearance="outline" subscriptSizing="dynamic" class="status-field">
+        <mat-select value="" aria-label="Filter by status">
+          <mat-option value="">All Status</mat-option>
+          <mat-option value="active">Active</mat-option>
+          <mat-option value="inactive">Inactive</mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
 
-    <!-- Client Table -->
-    <div class="table-responsive">
-      <table class="table align-middle client-table">
-        <thead>
-          <tr>
-            <th scope="col" class="text-center checkbox-column">
-              <input class="form-check-input" type="checkbox" aria-label="Select all clients">
-            </th>
-            <th scope="col">Name</th>
-            <th scope="col">Address</th>
-            <th scope="col">Website</th>
-            <th scope="col">Created On</th>
-            <th scope="col">Status</th>
-            <th scope="col" class="text-center">Actions</th>
-            <th scope="col" class="text-center">
-             <button type="button" class="btn btn-outline-danger action-btn" title="Delete client" aria-label="Delete client">
-                <i class="bi bi-trash3"></i>
-              </button>
-            </th>
-          </tr>
-        </thead>
+    <!-- Client table -->
+    <div class="table-scroll">
+      <table mat-table [dataSource]="clients" class="client-table">
+        <ng-container matColumnDef="select">
+          <th mat-header-cell *matHeaderCellDef class="col-check">
+            <mat-checkbox color="primary" aria-label="Select all clients"></mat-checkbox>
+          </th>
+          <td mat-cell *matCellDef="let client" class="col-check">
+            <mat-checkbox color="primary" [attr.aria-label]="'Select ' + client.name"></mat-checkbox>
+          </td>
+        </ng-container>
 
-        <tbody>
-          <tr>
-            <td class="text-center">
-              <input class="form-check-input" type="checkbox" aria-label="Select Acme Technologies">
-            </td>
-            <td>
-              <div class="client-name">Acme Technologies</div>
-            </td>
-            <td>Kozhikode, Kerala, India</td>
-            <td>
-              <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="website-link">
-                example.com
-              </a>
-            </td>
-            <td>15 Oct 2026</td>
-            <td><span class="status-badge status-active">Active</span></td>
-            <td class="text-center">
-              <div class="d-flex justify-content-center gap-3">
-                <button type="button" class="action-btn" title="View client" aria-label="View client">
-                  <i class="bi bi-eye"></i>
-                </button>
-                <button type="button" class="btn btn-outline-primary action-btn" title="Edit client" aria-label="Edit client">
-                  <i class="bi bi-pencil"></i>
-                </button>
-              </div>
-            </td>
-            <td>
-              <button type="button" class="btn btn-outline-danger action-btn" title="Delete client" aria-label="Delete client">
-                <i class="bi bi-trash3"></i>
-              </button>
-            </td>
-          </tr>
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let client" class="client-name">{{ client.name }}</td>
+        </ng-container>
 
-          <tr>
-            <td class="text-center">
-              <input class="form-check-input" type="checkbox" aria-label="Select Bright Solutions">
-            </td>
-            <td>
-              <div class="client-name">Bright Solutions</div>
-            </td>
-            <td>Kochi, Kerala, India</td>
-            <td>
-              <a href="https://example.org" target="_blank" rel="noopener noreferrer" class="website-link">
-                example.org
-              </a>
-            </td>
-            <td>10 Oct 2026</td>
-            <td><span class="status-badge status-active">Active</span></td>
-            <td class="text-center">
-              <div class="d-flex justify-content-center gap-3">
-                <button type="button" class="btn btn-outline-primary action-btn" title="Suspend Client" aria-label="Suspend Client">
-                  <i class="bi bi-pause-circle"></i>
-                </button>
-                <button type="button" class="btn btn-outline-primary action-btn" title="Edit client" aria-label="Edit client">
-                  <i class="bi bi-pencil"></i>
-                </button>
-              </div>
-            </td>
-            <td>
-              <button type="button" class="btn btn-outline-danger action-btn" title="Delete client" aria-label="Delete client">
-                <i class="bi bi-trash3"></i>
-              </button>
-            </td>
-          </tr>
+        <ng-container matColumnDef="address">
+          <th mat-header-cell *matHeaderCellDef>Address</th>
+          <td mat-cell *matCellDef="let client">{{ client.address }}</td>
+        </ng-container>
 
-          <tr>
-            <td class="text-center">
-              <input class="form-check-input" type="checkbox" aria-label="Select Nova Systems">
-            </td>
-            <td>
-              <div class="client-name">Nova Systems</div>
-            </td>
-            <td>Bengaluru, Karnataka, India</td>
-            <td>
-              <a href="https://example.net" target="_blank" rel="noopener noreferrer" class="website-link">
-                example.net
-              </a>
-            </td>
-            <td>05 Oct 2026</td>
-            <td><span class="status-badge status-inactive">Inactive</span></td>
-            <td class="text-center">
-              <div class="d-flex justify-content-center gap-3">
-                <button type="button" class="action-btn" title="View client" aria-label="View client">
-                  <i class="bi bi-eye"></i>
+        <ng-container matColumnDef="website">
+          <th mat-header-cell *matHeaderCellDef>Website</th>
+          <td mat-cell *matCellDef="let client">
+            <a class="website-link" [href]="'https://' + client.website" target="_blank" rel="noopener noreferrer">
+              {{ client.website }}
+            </a>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="createdOn">
+          <th mat-header-cell *matHeaderCellDef>Created On</th>
+          <td mat-cell *matCellDef="let client">{{ client.createdOn }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef>Status</th>
+          <td mat-cell *matCellDef="let client">
+            <span
+              class="status-badge"
+              [class.status-active]="client.status === 'Active'"
+              [class.status-inactive]="client.status === 'Inactive'"
+            >{{ client.status }}</span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef class="col-center">Actions</th>
+          <td mat-cell *matCellDef="let client" class="col-center">
+            <div class="row-actions">
+              @if (client.quickAction === 'view') {
+                <button mat-icon-button type="button" matTooltip="View client" aria-label="View client">
+                  <mat-icon>visibility</mat-icon>
                 </button>
-                <button type="button" class="btn btn-outline-primary action-btn" title="Edit client" aria-label="Edit client">
-                  <i class="bi bi-pencil"></i>
+              } @else {
+                <button mat-icon-button type="button" color="primary" matTooltip="Suspend client" aria-label="Suspend client">
+                  <mat-icon>pause_circle_outline</mat-icon>
                 </button>
-              </div>
-            </td>
-            <td>
-              <button type="button" class="btn btn-outline-danger action-btn" title="Delete client" aria-label="Delete client">
-                <i class="bi bi-trash3"></i>
+              }
+              <button mat-icon-button type="button" color="primary" matTooltip="Edit client" aria-label="Edit client">
+                <mat-icon>edit</mat-icon>
               </button>
-            </td>
-          </tr>
-        </tbody>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef class="col-center">
+            <button mat-icon-button type="button" color="warn" matTooltip="Delete selected clients" aria-label="Delete selected clients">
+              <mat-icon>delete_outline</mat-icon>
+            </button>
+          </th>
+          <td mat-cell *matCellDef="let client" class="col-center">
+            <button mat-icon-button type="button" color="warn" matTooltip="Delete client" aria-label="Delete client">
+              <mat-icon>delete_outline</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       </table>
     </div>
 
-    <!-- Table Footer -->
-    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mt-3">
-      <small class="text-muted">Showing 1 to 3 of 3 entries</small>
-
-      <nav aria-label="Client listing pagination">
-        <ul class="pagination pagination-sm mb-0">
-          <li class="page-item disabled">
-            <a class="page-link" href="#" aria-label="Previous">Previous</a>
-          </li>
-          <li class="page-item active">
-            <a class="page-link" href="#" aria-current="page">1</a>
-          </li>
-          <li class="page-item disabled">
-            <a class="page-link" href="#" aria-label="Next">Next</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-
-  </div>
-</div>
+    <!-- Table footer -->
+    <mat-paginator
+      [length]="clients.length"
+      [pageSize]="10"
+      [hidePageSize]="true"
+      aria-label="Client listing pagination"
+    ></mat-paginator>
+  </mat-card-content>
+</mat-card>

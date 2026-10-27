@@ -40,79 +40,97 @@
             </div>
         </div>
         <!-- Table -->
-        <div class="table-responsive">
-            <table class="table table-hover align-middle">
-                <thead>
-                    <tr>
-                        <th width="80">Sl No</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Permissions</th>
-                        <th width="140">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Admin</td>
-                        <td>System Administrator</td>
-                        <td>
-                            <span class="badge bg-primary permission-badge">Create</span>
-                            <span class="badge bg-success permission-badge">Edit</span>
-                            <span class="badge bg-warning permission-badge">Delete</span>
-                            <span class="badge bg-info permission-badge">View</span>
-                        </td>
-                        <td>
-                            <button class="btn btn-outline-primary action-btn" [routerLink]="['/role/edit-role']">
-                                <i class="bi bi-pencil"></i>
-                            </button>
+        
+<div class="common-table-card">
+  <div class="table-wrapper">
+    <table mat-table [dataSource]="roles" class="common-table">
 
-                            <button class="btn btn-outline-danger action-btn">
-                                <i class="bi bi-trash"></i>
-                            </button>
-                        </td>
-                    </tr>
+      <!-- Sl No -->
+      <ng-container matColumnDef="slNo">
+        <th mat-header-cell *matHeaderCellDef class="sl-no-column">
+          Sl No
+        </th>
+        <td mat-cell *matCellDef="let role; let i = index">
+          {{ i + 1 }}
+        </td>
+      </ng-container>
 
-                    <tr>
-                        <td>2</td>
-                        <td>Manager</td>
-                        <td>Department Manager</td>
-                        <td>
-                            <span class="badge bg-success">Edit</span>
-                            <span class="badge bg-info">View</span>
-                        </td>
-                        <td>
-                            <button class="btn btn-outline-primary action-btn" [routerLink]="['/role/edit-role']">
-                                <i class="bi bi-pencil"></i>
-                            </button>
+      <!-- Name -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let role">
+          {{ role.name }}
+        </td>
+      </ng-container>
 
-                            <button class="btn btn-outline-danger action-btn">
-                                <i class="bi bi-trash"></i>
-                            </button>
-                        </td>
-                    </tr>
+      <!-- Description -->
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef>Description</th>
+        <td mat-cell *matCellDef="let role">
+          {{ role.description }}
+        </td>
+      </ng-container>
 
-                    <tr>
-                        <td>3</td>
-                        <td>User</td>
-                        <td>Standard User Access</td>
-                        <td>
-                            <span class="badge bg-info">View</span>
-                        </td>
-                        <td>
-                            <button class="btn btn-outline-primary action-btn" [routerLink]="['/role/edit-role']">
-                                <i class="bi bi-pencil"></i>
-                            </button>
+      <!-- Permissions -->
+      <ng-container matColumnDef="permissions">
+        <th mat-header-cell *matHeaderCellDef>Permissions</th>
+        <td mat-cell *matCellDef="let role">
+          <div class="permission-list">
+            @for (permission of role.permissions; track permission) {
+              <span
+                class="permission-badge"
+                [ngClass]="'permission-' + permission.toLowerCase()">
+                {{ permission }}
+              </span>
+            }
+          </div>
+        </td>
+      </ng-container>
 
-                            <button class="btn btn-outline-danger action-btn">
-                                <i class="bi bi-trash"></i>
-                            </button>
-                        </td>
-                    </tr>
+      <!-- Actions -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef class="actions-column">
+          Actions
+        </th>
+        <td mat-cell *matCellDef="let role">
+          <div class="action-buttons">
+            <button
+              mat-icon-button
+              class="edit-action"
+              aria-label="Edit role"
+              matTooltip="Edit"
+              [routerLink]="['/role/edit-role']">
+              <mat-icon>edit</mat-icon>
+            </button>
 
-                </tbody>
-            </table>
-        </div>
+            <button
+              mat-icon-button
+              class="delete-action"
+              aria-label="Delete role"
+              matTooltip="Delete"
+              (click)="deleteRole(role.id)">
+              <mat-icon>delete_outline</mat-icon>
+            </button>
+          </div>
+        </td>
+      </ng-container>
+
+      <!-- Table rows -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+      <!-- Empty state -->
+      <tr class="mat-mdc-row" *matNoDataRow>
+        <td class="mat-mdc-cell empty-state"
+            [attr.colspan]="displayedColumns.length">
+          No roles found.
+        </td>
+      </tr>
+
+    </table>
+  </div>
+</div>
+
 
         <!-- Footer -->
         <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap">
